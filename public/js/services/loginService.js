@@ -19,8 +19,10 @@ app.factory('loginService', function ($http, $q) {
                 if (typeof(Storage) !== "undefined") {
                     if (response.data) {
                         sessionStorage.userId = response.data.id;
+                        console.log(sessionStorage.userId);
                     }
                     else {
+                        console.log(sessionStorage.userId);
                         deferred.resolve(false);
                     }
                 }

@@ -3,6 +3,7 @@
  */
 app.controller('loginController', ["$scope", "$location", "loginService",
     function ($scope, $location, loginService) {
+        $scope.loggedIn = 0;
 
         $scope.login = function () {
             if (!$scope.username) {
@@ -15,8 +16,11 @@ app.controller('loginController', ["$scope", "$location", "loginService",
                     return
                 }
                 else {
+
                     $location.path('/home');
                 }
+
+                console.log($scope.loggedIn);
             });
         };
 

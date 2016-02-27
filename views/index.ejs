@@ -36,13 +36,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="#company">Home</a></li>
-                    <li><a href="#login">Login</a></li>
+                    <li><a href="#registration">Registration</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-show =sessionStorage.loggedIn><a href="#">Logout</a></li>
-                    <li ng-hide =sessionStorage.loggedIn><a href="#login" data-toggle="modal">Login</a></li>
+                    <li ng-show =loggedIn><a href="#">Logout</a></li>
+                    <li ng-show =!loggedIn><a data-target="#login" data-toggle="modal">Login</a></li>
+                    {{loggedIn}}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
