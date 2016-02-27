@@ -19,14 +19,13 @@ router.get('/', function (req, res) {
     user.save();
     console.log("auth: " + JSON.stringify(auth));
 
-
     res.send('success');
 });
 
 /* GET home page. */
-router.get('/login', function (req, res) {
-
-    auth.authenticate("user1", "bacon", function (userId) {
+router.post('/login', function (req, res) {
+    var userData = req.body;
+    auth.authenticate(userData.username, userData.password, function (userId) {
 
         if (userId) {
 
@@ -36,20 +35,18 @@ router.get('/login', function (req, res) {
                 sub: userId
             };
 
-            jwt.sign(claims,secretKey,{} ,function (token) {
+            jwt.sign(claims, secretKey, {}, function (token) {
 
                 res.send(token);
             });
 
         }
 
-
     });
 
 });
 
 router.get('/logout', function (req, res) {
-
 
 });
 
