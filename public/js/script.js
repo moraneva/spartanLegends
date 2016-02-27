@@ -9,12 +9,12 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
     $routeProvider.
         when('/home', {
-            templateUrl: '/js/home.html',
+            templateUrl: '/views/home.html',
             controller: 'myCtrl'
         }).
 
         when('/login', {
-            templateUrl: '/js/login.html'
+            templateUrl: '/views/login.html'
         }).
 
         otherwise({
