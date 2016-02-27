@@ -42,8 +42,8 @@ app.get('*', function (req, res, next) {
 
         next();
     } else {
-        next();
-        //verify(req.get('AuthToken'), next());
+
+        auth.verify(req.get('authToken'), next());
     }
 });
 

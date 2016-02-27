@@ -34,5 +34,11 @@ Auth.authenticate = function (username, password, callback) {
 
 Auth.verify = function (token, callback) {
 
+    console.log(token);
+
+    jwt.verify(token, secretKey, {}, function (payload) {
+
+        console.log(payload)
+    });
 };
 
