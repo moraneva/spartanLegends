@@ -34,6 +34,8 @@ var data = [
             },
             {
                 'name': 'Facebook',
+                ' large_img_path': 'facebook.png',
+
             },
             {
                 'name': 'Google',
