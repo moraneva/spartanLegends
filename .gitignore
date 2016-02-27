@@ -3,4 +3,4 @@ Vagrantfile
 .DS_Store
 .DS_Store/
 .vagrant/
-.vagrant/*
+.vagrant/*npm-debug.log
