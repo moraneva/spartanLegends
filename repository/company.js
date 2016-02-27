@@ -22,7 +22,7 @@ CompanyRepository.getCompanies = function (callback) {
 
 CompanyRepository.getCompany = function (name, callback) {
 
-    Company.find({name: name}).populate('products').exec( function (err, document) {
+    Company.find({name: name}).populate('products',  'name thumbnail_img_path ').exec( function (err, document) {
 
 
         if (!err) {
