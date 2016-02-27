@@ -17,7 +17,7 @@ app.factory('loginService', function ($http, $q) {
             function success(response) {
                 if (typeof(Storage) !== "undefined") {
                     if (response.data) {
-                        sessionStorage.authToken = response.data;
+                        sessionStorage.loggedIn = true;
                         deferred.resolve(true);
                     }
                     else {

@@ -89,7 +89,7 @@ var data = [
                 password: bcrypt.hashSync('bobpass'),
             },
             {
-                name: 'Loser',
+                name: 'Loser1',
                 username: 'loseruser',
                 password: bcrypt.hashSync('loserpass'),
             },
