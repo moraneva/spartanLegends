@@ -9,15 +9,15 @@ seeder.connect('mongodb://localhost', function () {
     // Load Mongoose models
     seeder.loadModels([
         'models/company.js',
-        'models/user.js'
+        'models/user.js',
+        'models/product.js'
     ]);
 
     // Clear specified collections
-    seeder.clearModels(['Company', 'User'], function () {
+    seeder.clearModels(['Company', 'User', 'Product'], function () {
 
         // Callback to populate DB once collections have been cleared
         seeder.populateModels(data);
-
 
     });
 
