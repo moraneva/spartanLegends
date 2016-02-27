@@ -33,7 +33,8 @@ var companyDocuments = [
     {
         _id: ObjectId("5126bc054aed4daf9e2ab773"),
         name: 'Facebook',
-        icon: "fa-facebook-official"
+        icon: "fa-facebook-official",
+        products: [ObjectId("5126bc054aed4daf9e2ab793")]
     },
     {
         _id: ObjectId("5126bc054aed4daf9e2ab774"),
@@ -128,8 +129,14 @@ var data = [
             model: 'Product',
             documents: [
                 {
+                    _id: ObjectId("5126bc054aed4daf9e2ab793"),
                     company: ObjectId("5126bc054aed4daf9e2ab773"),
                     description: "Facebook News Feed"
+                },
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab794"),
+                    company: ObjectId("5126bc054aed4daf9e2ab773"),
+                    description: "Instagram"
                 }
             ]
         }
