@@ -8,12 +8,12 @@ app.config(function ($routeProvider) {
     $routeProvider.
         when('/companies', {
             templateUrl: '/views/companies.html',
-            controller: 'companiesCtrl'
+            controller: 'companyListController'
         }).
 
-        when('/company' , {
+        when('/company/:companyName' , {
             templateUrl: '/views/company.html',
-            controller: 'companyCtrl'
+            controller: 'companyController'
         }).
 
         otherwise({
@@ -23,10 +23,7 @@ app.config(function ($routeProvider) {
 
 });
 
-app.controller('loginCtrl', function ($scope) {
 
-
-});
 
 app.controller('companiesCtrl', function ($scope) {
 

@@ -1,13 +1,13 @@
 
-<div class="row">
+<div class="row custom-row">
     <div class="col-sm-3">
-        <div class="panel panel-default sidebar">
+        <div class="panel panel-default sidebar rounded">
             <!-- Default panel contents -->
-            <div class="panel-heading">Products</div>
+            <div class="panel-heading rounded-top" style="position: static">Products</div>
 
             <!-- List group -->
-            <ul class="list-group">
-                <li ng-repeat="product in products" class="list-group-item product"
+            <ul class="list-group sidebar">
+                <li ng-repeat="product in products" class="list-group-item product rounded"
                     ng-click="onClickProduct(product)">
                     {{product.name}}
                 </li>
@@ -16,10 +16,10 @@
     </div>
 
     <div class="col-sm-9">
-        <div ng-repeat="post in selectedProduct.posts track by $index" class="panel panel-default"
+        <div ng-repeat="post in selectedProduct.posts track by $index" class="panel panel-default rounded"
              ng-repeat="idea in ideas">
-            <div class="panel-heading custom-heading">
-                <div class="progress" ng-class="{noColor: getPercent(post) == 'NaN%'}">
+            <div class="panel-heading custom-heading rounded-top">
+                <div class="progress rounded-top" ng-class="{noColor: getPercent(post) == 'NaN%'}">
                     <div class="progress-bar progress-bar-success" role="progressbar"
                          ng-style="{width: getPercent(post)}">
                     </div>
@@ -56,7 +56,7 @@
                 </button>
                 <div class="comments" ng-repeat="eachComment in post.comments" ng-hide="commentFlag[post._id] == 0">
                     <h4>{{eachComment.user.username}}</h4>
-                    <div class="comment">
+                    <div class="comment shadow">
                         {{eachComment.text}}
                     </div>
                 </div>
@@ -66,8 +66,8 @@
 
             </div>
 
-            <div class="panel-footer">
-                <div class="input-group">
+            <div class="panel-footer rounded-bottom">
+                <div class="input-group rounded-bottom">
                     <input class="form-control" placeholder="Add a comment" type="text" ng-model="newComment[post._id]">
                             <span class="input-group-addon">
                                 <a ng-click="addComment(post)"><i class="fa fa-edit"></i></a>
