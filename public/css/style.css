@@ -1,8 +1,30 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
 a {
   color: #00B7FF;
+}
+
+
+.logo{
+
+  font-size: 300%;
+
+}
+
+.amatic{
+
+  font-family: 'Amatic SC', cursive;
+
+}
+
+.main-wrapper{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.progress{
+  background-color: #d9534f;
+}
+
+.noColor{
+  background-color: gainsboro !important;
 }
