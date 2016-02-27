@@ -46,5 +46,6 @@ Auth.verify = function (token, callback) {
 Auth.register = function (data) {
 
 
+
 };
 
