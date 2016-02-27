@@ -10,9 +10,9 @@ var secretKey = uuid.v4();
 
 Auth = module.exports;
 
-Auth.authenticate = function (name, password, callback) {
+Auth.authenticate = function (username, password, callback) {
 
-    User.getUser(name, function (user) {
+    User.getUser(username, function (user) {
 
         if (bcrypt.compareSync(password, user.password)) {
 

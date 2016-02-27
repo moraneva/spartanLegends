@@ -7,7 +7,6 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 var auth = require('../services/auth');
 
-
 router.get('/', function (req, res) {
 
     var pword = bcrypt.hashSync('bacon');
@@ -17,22 +16,22 @@ router.get('/', function (req, res) {
     user.save();
     console.log("auth: " + JSON.stringify(auth));
 
-
     res.send('success');
 });
 
 /* GET home page. */
-router.get('/login', function (req, res) {
+router.post('/login', function (req, res) {
+    var userData = req.body;
 
-    auth.authenticate("user1", "bacon", function (retVal) {
+    auth.authenticate(userData.username, userData.password, function (retVal) {
 
         res.send(retVal);
+
     });
 
 });
 
 router.get('/logout', function (req, res) {
-
 
 });
 

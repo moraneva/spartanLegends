@@ -2,6 +2,7 @@
  * Created by evan on 2/27/16.
  */
 var seeder = require('mongoose-seed');
+var bcrypt = require('bcrypt-nodejs');
 
 // Connect to MongoDB via Mongoose
 seeder.connect('mongodb://localhost', function () {
@@ -33,6 +34,8 @@ var data = [
             },
             {
                 'name': 'Facebook',
+                ' large_img_path': 'facebook.png',
+
             },
             {
                 'name': 'Google',
@@ -63,7 +66,7 @@ var data = [
             {
                 'name': 'Brian',
                 'username': 'brianuser',
-                'password': 'brianpass',
+                'password': bcrypt.hashSync('brianpass'),
             },
             {
                 'name': 'Zach',
