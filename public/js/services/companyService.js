@@ -16,10 +16,10 @@ app.factory('companyService', function ($http, $q) {
 
         return deferred.promise;
     };
-    service.getOneCompanyName = function(name) {
+    service.getOneCompanyName = function (name) {
         var deferred = $q.defer();
 
-        $http.get('/company/'+name).then(
+        $http.get('/company/' + name).then(
             function success(response) {
                 deferred.resolve(response.data);
             }
@@ -28,4 +28,5 @@ app.factory('companyService', function ($http, $q) {
         return deferred.promise;
     };
 
+    return service;
 });
