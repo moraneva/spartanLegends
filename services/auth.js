@@ -14,6 +14,6 @@ module.authenticate = function (name, password) {
         return user._id;
     } else {
 
-        return false;g
+        return false;
     }
 };
