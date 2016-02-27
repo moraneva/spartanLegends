@@ -9,7 +9,8 @@ var postSchema = new Schema({
             type: Schema.ObjectId, ref: 'User'
         },
         userUpvotes: [{type: Schema.ObjectId, ref: 'User'}],
-        postMessage: String
+        postMessage: String,
+        comments: [{type: Schema.ObjectId, ref: 'Comment'}]
     })
     ;
 
