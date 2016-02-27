@@ -16,3 +16,10 @@ UserRepository.getUser = function (criteria, callback) {
         return callback(user);
     });
 };
+
+UserRepository.createUser = function (callback) {
+
+    var user = new User({});
+
+    user.save(callback(err, user));
+};

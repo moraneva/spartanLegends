@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 var commentSchema = new Schema({
     _id: Number,
     text: String,
-    posterId: {
+    user: {
         type: Number, ref: 'User'
     },
     post: {type: Number, ref: 'Post'}
