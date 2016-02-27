@@ -14,3 +14,4 @@ ProductRepository.getUser = function (companyId, callback) {
         return callback(user);
     });
 };
+
