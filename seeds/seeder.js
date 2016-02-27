@@ -30,33 +30,33 @@ var data = [
         'model': 'Company',
         'documents': [
             {
-                'name': 'Ford',
+                name: 'Ford',
             },
             {
-                'name': 'Facebook',
+                name: 'Facebook',
                 ' large_img_path': 'facebook.png',
 
             },
             {
-                'name': 'Google',
+                name: 'Google',
             },
             {
-                'name': 'Microsoft',
+                name: 'Microsoft',
             },
             {
-                'name': 'Apple',
+                name: 'Apple',
             },
             {
-                'name': 'Reddit',
+                name: 'Reddit',
             },
             {
-                'name': 'Youtube',
+                name: 'Youtube',
             },
             {
-                'name': 'Snapchat',
+                name: 'Snapchat',
             },
             {
-                'name': 'Spartahack'
+                name: 'Spartahack'
             }
         ]
     },
@@ -64,39 +64,39 @@ var data = [
         'model': 'User',
         'documents': [
             {
-                'name': 'Brian',
-                'username': 'brianuser',
-                'password': bcrypt.hashSync('brianpass'),
+                name: 'Brian',
+                username: 'brianuser',
+                password: bcrypt.hashSync('brianpass'),
             },
             {
-                'name': 'Zach',
-                'username': 'zachuser',
-                'password': bcrypt.hashSync('zachpass'),
+                name: 'Zach',
+                username: 'zachuser',
+                password: bcrypt.hashSync('zachpass'),
             },
             {
-                'name': 'Ryan',
-                'username': 'ryanuser',
-                'password': bcrypt.hashSync('ryanpass'),
+                name: 'Ryan',
+                username: 'ryanuser',
+                password: bcrypt.hashSync('ryanpass'),
             },
             {
-                'name': 'Evan',
-                'username': 'evanuser',
-                'password': bcrypt.hashSync('evanpass'),
+                name: 'Evan',
+                username: 'evanuser',
+                password: bcrypt.hashSync('evanpass'),
             },
             {
-                'name': 'Bob',
-                'username': 'bobuser',
-                'password': bcrypt.hashSync('bobpass'),
+                name: 'Bob',
+                username: 'bobuser',
+                password: bcrypt.hashSync('bobpass'),
             },
             {
-                'name': 'Loser',
-                'username': 'loseruser',
-                'password': bcrypt.hashSync('loserpass'),
+                name: 'Loser',
+                username: 'loseruser',
+                password: bcrypt.hashSync('loserpass'),
             },
             {
-                'name': 'test',
-                'username': 'test',
-                'password': bcrypt.hashSync('test')
+                name: 'test',
+                username: 'test',
+                password: bcrypt.hashSync('test')
             }
         ]
     },
