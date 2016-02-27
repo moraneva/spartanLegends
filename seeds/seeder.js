@@ -3,6 +3,7 @@
  */
 var seeder = require('mongoose-seed');
 var bcrypt = require('bcrypt-nodejs');
+var ObjectId = require("mongodb").ObjectId;
 
 // Connect to MongoDB via Mongoose
 seeder.connect('mongodb://localhost', function () {
@@ -11,11 +12,12 @@ seeder.connect('mongodb://localhost', function () {
     seeder.loadModels([
         'models/company.js',
         'models/user.js',
+        'models/post.js',
         'models/product.js'
     ]);
 
     // Clear specified collections
-    seeder.clearModels(['Company', 'User', 'Product'], function () {
+    seeder.clearModels(['Company', 'User', 'Post', 'Product'], function () {
 
         // Callback to populate DB once collections have been cleared
         seeder.populateModels(data);
@@ -25,79 +27,111 @@ seeder.connect('mongodb://localhost', function () {
 });
 
 // Data array containing seed data - documents organized by Model
-var data = [
-    {
-        'model': 'Company',
-        'documents': [
-            {
-                name: 'Ford',
-            },
-            {
-                name: 'Facebook',
-                ' large_img_path': 'facebook.png',
 
-            },
-            {
-                name: 'Google',
-            },
-            {
-                name: 'Microsoft',
-            },
-            {
-                name: 'Apple',
-            },
-            {
-                name: 'Reddit',
-            },
-            {
-                name: 'Youtube',
-            },
-            {
-                name: 'Snapchat',
-            },
-            {
-                name: 'Spartahack'
-            }
-        ]
+var companyDocuments = [
+
+    {
+        _id: ObjectId("5126bc054aed4daf9e2ab773"),
+        name: 'Facebook',
+        icon: "fa-facebook-official"
     },
     {
-        'model': 'User',
-        'documents': [
-            {
-                name: 'Brian',
-                username: 'brianuser',
-                password: bcrypt.hashSync('brianpass'),
-            },
-            {
-                name: 'Zach',
-                username: 'zachuser',
-                password: bcrypt.hashSync('zachpass'),
-            },
-            {
-                name: 'Ryan',
-                username: 'ryanuser',
-                password: bcrypt.hashSync('ryanpass'),
-            },
-            {
-                name: 'Evan',
-                username: 'evanuser',
-                password: bcrypt.hashSync('evanpass'),
-            },
-            {
-                name: 'Bob',
-                username: 'bobuser',
-                password: bcrypt.hashSync('bobpass'),
-            },
-            {
-                name: 'Loser',
-                username: 'loseruser',
-                password: bcrypt.hashSync('loserpass'),
-            },
-            {
-                name: 'test',
-                username: 'test',
-                password: bcrypt.hashSync('test')
-            }
-        ]
+        _id: ObjectId("5126bc054aed4daf9e2ab774"),
+        name: 'Google',
+        icon: "fa-google"
+    },
+    {
+        _id: ObjectId("5126bc054aed4daf9e2ab775"),
+        name: 'Twitter',
+        icon: "fa-twitter"
+    },
+    {
+        _id: ObjectId("5126bc054aed4daf9e2ab776"),
+        name: 'Slack',
+        icon: "fa-slack"
+    },
+    {
+        _id: ObjectId("5126bc054aed4daf9e2ab777"),
+        name: 'Amazon',
+        icon: "fa-amazon"
     },
 ];
+var data = [
+        {
+            'model': 'Company',
+            'documents': companyDocuments
+        },
+        {
+            'model': 'User',
+            'documents': [
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab778"),
+                    name: 'Brian',
+                    username: 'brianuser',
+                    password: bcrypt.hashSync('brianpass'),
+                },
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab779"),
+                    name: 'Zach',
+                    username: 'zachuser',
+                    password: bcrypt.hashSync('zachpass'),
+                },
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab780"),
+                    name: 'Ryan',
+                    username: 'ryanuser',
+                    password: bcrypt.hashSync('ryanpass'),
+                },
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab781"),
+                    name: 'Evan',
+                    username: 'evanuser',
+                    password: bcrypt.hashSync('evanpass'),
+                },
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab782"),
+                    name: 'Bob',
+                    username: 'bobuser',
+                    password: bcrypt.hashSync('bobpass'),
+                },
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab783"),
+                    name: 'Loser1',
+                    username: 'loseruser',
+                    password: bcrypt.hashSync('loserpass'),
+                },
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab784"),
+                    name: 'test',
+                    username: 'test',
+                    password: bcrypt.hashSync('test')
+                }
+            ]
+        },
+        {
+            model: 'Post',
+            documents: [
+                {
+                    productId: ObjectId("5126bc054aed4daf9e2ab783"),
+                    postingUser: ObjectId("5126bc054aed4daf9e2ab778"),
+                    userUpvotes: [
+                        ObjectId("5126bc054aed4daf9e2ab779"),
+                        ObjectId("5126bc054aed4daf9e2ab780"),
+                        ObjectId("5126bc054aed4daf9e2ab781"),
+                        ObjectId("5126bc054aed4daf9e2ab782")
+                    ],
+                    postMessage: "I want FB to have a dislike button"
+                },
+            ]
+        },
+        {
+            model: 'Product',
+            documents: [
+                {
+                    company: ObjectId("5126bc054aed4daf9e2ab773"),
+                    description: "Facebook News Feed"
+                }
+            ]
+        }
+    ]
+    ;

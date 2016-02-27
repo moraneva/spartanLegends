@@ -18,6 +18,7 @@ app.factory('loginService', function ($http, $q) {
                 if (typeof(Storage) !== "undefined") {
                     if (response.data) {
                         $http.defaults.headers.post.AuthToken = response.data;
+
                         deferred.resolve(true);
                     }
                     else {
@@ -41,7 +42,7 @@ app.factory('loginService', function ($http, $q) {
             function s(response) {
                 console.log(response);
             }, function e(er) {
-               console.log(er);
+                console.log(er);
             });
 
     };

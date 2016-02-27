@@ -1,6 +1,11 @@
-
-a {
-  color: #dcfdff;
+a{
+  color: #344040;
+}
+a:hover{
+  text-decoration: none;
+  cursor: pointer;
+  cursor: hand;
+  color: black;
 }
 
 body{
@@ -37,4 +42,25 @@ body{
 
 .noColor{
   background-color: gainsboro !important;
+}
+
+.comment{
+  background-color: #bbe3f3;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.company-name{
+  font-size: 300%;
+}
+
+.company-list{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.company-header:hover{
+  background-color: #bbe3f3;
+
 }
