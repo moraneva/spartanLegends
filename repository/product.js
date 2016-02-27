@@ -2,16 +2,21 @@
  * Created by evan on 2/27/16.
  */
 var Product = require('../models/product');
+var Post = require('../models/post');
+var Comment = require('../models/comment');
 
 ProductRepository = module.exports;
 
-ProductRepository.getUser = function (companyId, callback) {
+ProductRepository.getProduct = function (productId, callback) {
 
-    Product.findOne(criteria, '', function (err, user) {
+    Product.find({_id: productId}).populate('posts.comments').exec( function (err, document) {
 
-        if (err) return handleError(err);
+        if (!err) {
 
-        return callback(user);
+            callback(document);
+        } else  {
+
+            callback(-1);
+        }
     });
 };
-
