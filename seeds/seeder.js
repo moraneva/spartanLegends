@@ -151,7 +151,7 @@ function createComment(pId, uId, id) {
 
     return {
         text: text,
-        posterId: uId,
+        user: uId,
         post: pId,
         _id: id
     }
