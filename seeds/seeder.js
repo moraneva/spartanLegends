@@ -3,7 +3,6 @@
  */
 var seeder = require('mongoose-seed');
 var bcrypt = require('bcrypt-nodejs');
-var ObjectId = require('mongodb').ObjectId;
 var Faker = require('Faker');
 
 console.log(Faker.Name.firstName());
@@ -75,7 +74,6 @@ function createUser(id) {
     return {_id: id, name: Faker.Name.findName(), username: Faker.Name.lastName(), password: bcrypt.hashSync('test')};
 }
 
-
 var i = 0;
 for (; i < 20;) {
 
@@ -87,15 +85,22 @@ console.log(users);
 
 function createProduct(cId, id) {
 
-    companyDocuments[cId-1].products.push(id);
+    companyDocuments[cId - 1].products.push(id);
 
-    return {_id: id, company: cId, img: "abc123", description: Faker.Lorem.sentences(2), name: Faker.Address.streetName(), posts: []};
+    return {
+        _id: id,
+        company: cId,
+        img: "abc123",
+        description: Faker.Lorem.sentences(2),
+        name: Faker.Address.streetName(),
+        posts: []
+    };
 
 }
 
 for (i = 0; i < 50;) {
 
-    products.push(createProduct(companyDocuments[i%5]._id, ++i));
+    products.push(createProduct(companyDocuments[i % 5]._id, ++i));
 }
 
 console.log(products);
@@ -105,11 +110,11 @@ function createPost(pId, uId, id) {
     var uV = [];
     var dV = [];
 
-    products[pId-1].posts.push(id);
+    products[pId - 1].posts.push(id);
 
-    for (var x = 0; x < Math.floor(Math.random())*19; x++) {
+    for (var x = 0; x < Math.floor(Math.random() * 19); x++) {
 
-        if (x%2) {
+        if (x % 2) {
             uV.push(users[x]._id);
         } else {
 
@@ -117,7 +122,7 @@ function createPost(pId, uId, id) {
         }
     }
 
-    var post = (Math.floor(Math.random())*100 > 50) ? Faker.Lorem.sentences(Math.floor(Math.random()) * 4): Faker.Lorem.paragraphs(Math.floor(Math.random()) * 3);
+    var post = (Math.floor(Math.random() * 100) > 50) ? Faker.Lorem.sentences(Math.floor(Math.random() * 4)) : Faker.Lorem.paragraphs(Math.floor(Math.random()) * 3);
 
     return {
         _id: id,
@@ -130,20 +135,18 @@ function createPost(pId, uId, id) {
     };
 }
 
-
 for (i = 0; i < 300;) {
 
-
-    posts.push(createPost(products[Math.floor(Math.random()) * 50]._id, users[Math.floor(Math.random()) * 20]._id, ++i));
+    posts.push(createPost(products[Math.floor(Math.random() * 50)]._id, users[Math.floor(Math.random() * 20)]._id, ++i));
 }
 
 console.log(posts);
 
 function createComment(pId, uId, id) {
 
-    posts[pId -1].comments.push(id);
+    posts[pId - 1].comments.push(id);
 
-    var text = (Math.floor(Math.random())*100 > 50) ? Faker.Lorem.sentences(Math.floor(Math.random()) * 3): Faker.Lorem.paragraphs(Math.floor(Math.random()) * 2);
+    var text = (Math.floor(Math.random() * 100) > 50) ? Faker.Lorem.sentences(Math.floor(Math.random() * 3 + 1)) : Faker.Lorem.paragraphs(Math.floor(Math.random() * 2 + 1));
 
     return {
         text: text,
@@ -156,11 +159,10 @@ function createComment(pId, uId, id) {
 
 for (i = 0; i < 1500;) {
 
-    comments.push(createComment(posts[Math.floor(Math.random()) * 300]._id, users[Math.floor(Math.random()) * 20]._id, ++i));
+    comments.push(createComment(posts[Math.floor(Math.random() * 300)]._id, users[Math.floor(Math.random() * 20)]._id, ++i));
 }
 
 console.log(comments);
-
 
 // Data array containing seed data - documents organized by Model
 
@@ -172,10 +174,10 @@ var data = [
     {
         model: 'User',
         documents: users
-    },{
+    }, {
         model: 'Post',
         documents: posts
-    },{
+    }, {
         model: 'Comment',
         documents: comments
     },

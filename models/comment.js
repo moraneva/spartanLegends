@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
+    _id: Number,
     text: String,
     posterId: {
         type: Number, ref: 'User'

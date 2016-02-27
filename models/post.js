@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
+        _id: Number,
         user: {
             type: Number, ref: 'User'
         },

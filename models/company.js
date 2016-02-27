@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var companySchema = new Schema({
+    _id: Number,
     name: String,
     thumbnail_img_path: String,
     icon: String,
