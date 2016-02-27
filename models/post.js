@@ -14,6 +14,7 @@ var postSchema = new Schema({
         comments: [{type: Schema.ObjectId, ref: 'Comment'}]
 });
 
+
 var Post = mongoose.model('Post', postSchema);
 
 // make this available to our users in our Node applications

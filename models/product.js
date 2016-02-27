@@ -11,7 +11,7 @@ var productSchema = new Schema({
     img: String,
     description: String,
     name: String,
-    posts: [{type: Schema.Types.ObjectId, ref: 'Posts'}]
+    posts: [{type: Schema.Types.ObjectId, ref: 'Post'}]
 });
 
 var Product = mongoose.model('Product', productSchema);
