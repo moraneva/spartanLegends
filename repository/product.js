@@ -4,17 +4,17 @@
 var Product = require('../models/product');
 var Post = require('../models/post');
 var Comment = require('../models/comment');
-
+var ObjectId = require('mongodb').ObjectId;
 ProductRepository = module.exports;
 
 ProductRepository.getProduct = function (productId, callback) {
 
-    Product.find({_id: productId}).populate('posts.comments').exec( function (err, document) {
+    Product.findOne({_id: ObjectId(productId)}).populate('posts.comments').exec(function (err, document) {
 
         if (!err) {
 
             callback(document);
-        } else  {
+        } else {
 
             callback(-1);
         }

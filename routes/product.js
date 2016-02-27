@@ -3,14 +3,14 @@
  */
 var express = require('express');
 var router = express.Router();
-var company = require('../repository/product');
+var Product = require('../repository/product');
 
-router.get('/id:', function (req, res) {
+router.get('/:id', function (req, res) {
 
+    console.log(req.params);
+    Product.getProduct(req.params.id, function (document) {
 
-    product.getProduct( req.params.id, function (document) {
-
-        if (err != -1) {
+        if (document != -1) {
 
             res.send(document);
         } else {

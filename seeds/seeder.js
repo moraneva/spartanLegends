@@ -113,7 +113,8 @@ var data = [
             model: 'Post',
             documents: [
                 {
-                    productId: ObjectId("5126bc054aed4daf9e2ab783"),
+                    _id: ObjectId("5126bc054aed4daf9e2ab899"),
+                    productId: ObjectId("5126bc054aed4daf9e2ab793"),
                     postingUser: ObjectId("5126bc054aed4daf9e2ab778"),
                     userUpvotes: [
                         ObjectId("5126bc054aed4daf9e2ab779"),
@@ -131,7 +132,8 @@ var data = [
                 {
                     _id: ObjectId("5126bc054aed4daf9e2ab793"),
                     company: ObjectId("5126bc054aed4daf9e2ab773"),
-                    description: "Facebook News Feed"
+                    description: "Facebook News Feed",
+                    posts: [ObjectId("5126bc054aed4daf9e2ab899")]
                 },
                 {
                     _id: ObjectId("5126bc054aed4daf9e2ab794"),

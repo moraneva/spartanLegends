@@ -1,9 +1,10 @@
 /**
  * Created by brian on 2/27/2016.
  */
-app.controller('companyListController', ["$scope", "companyService",
-    function ($scope, companyService) {
+app.controller('companyListController', ["$scope", "companyService", "productService",
+    function ($scope, companyService, productService) {
 
+        productService.getProduct("5126bc054aed4daf9e2ab793");
         companyService.getCompanyNames().then(function (companies) {
             $scope.companies = companies;
         });

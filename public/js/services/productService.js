@@ -1,7 +1,7 @@
 /**
  * Created by evan on 2/27/16.
  */
-app.factory('companyService', function ($http, $q) {
+app.factory('productService', function ($http, $q) {
 
     var service = {};
 
