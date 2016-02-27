@@ -13,11 +13,12 @@ seeder.connect('mongodb://localhost', function () {
         'models/company.js',
         'models/user.js',
         'models/post.js',
-        'models/product.js'
+        'models/product.js',
+        'models/comment.js'
     ]);
 
     // Clear specified collections
-    seeder.clearModels(['Company', 'User', 'Post', 'Product'], function () {
+    seeder.clearModels(['Company', 'User', 'Post', 'Product', 'Comment'], function () {
 
         // Callback to populate DB once collections have been cleared
         seeder.populateModels(data);
@@ -122,7 +123,8 @@ var data = [
                         ObjectId("5126bc054aed4daf9e2ab781"),
                         ObjectId("5126bc054aed4daf9e2ab782")
                     ],
-                    postMessage: "I want FB to have a dislike button"
+                    postMessage: "I want FB to have a dislike button",
+                    comments: [ObjectId("5126bc054aed4daf9e2ab900")]
                 },
             ]
         },
@@ -139,6 +141,17 @@ var data = [
                     _id: ObjectId("5126bc054aed4daf9e2ab794"),
                     company: ObjectId("5126bc054aed4daf9e2ab773"),
                     description: "Instagram"
+                }
+            ]
+        },
+        {
+            model: 'Comment',
+            documents: [
+                {
+                    _id: ObjectId("5126bc054aed4daf9e2ab900"),
+                    text: "ASDfsadfdsafds",
+                    posterId: ObjectId("5126bc054aed4daf9e2ab778"),
+                    post: ObjectId("5126bc054aed4daf9e2ab899")
                 }
             ]
         }
