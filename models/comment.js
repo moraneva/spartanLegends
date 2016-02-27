@@ -7,9 +7,9 @@ var Schema = mongoose.Schema;
 var commentSchema = new Schema({
     text: String,
     posterId: {
-        type: Schema.ObjectId, ref: 'User'
+        type: Number, ref: 'User'
     },
-    post: {type: Schema.Types.ObjectId, ref: 'Post'}
+    post: {type: Number, ref: 'Post'}
 });
 
 var Comment = mongoose.model('Comment', commentSchema);

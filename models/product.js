@@ -6,12 +6,12 @@ var Schema = mongoose.Schema;
 
 var productSchema = new Schema({
     company: {
-        type: Schema.ObjectId, ref: 'Company'
+        type: Number, ref: 'Company'
     },
     img: String,
     description: String,
     name: String,
-    posts: [{type: Schema.Types.ObjectId, ref: 'Post'}]
+    posts: [{type: Number, ref: 'Post'}]
 });
 
 var Product = mongoose.model('Product', productSchema);

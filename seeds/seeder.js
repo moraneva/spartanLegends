@@ -3,7 +3,10 @@
  */
 var seeder = require('mongoose-seed');
 var bcrypt = require('bcrypt-nodejs');
-var ObjectId = require("mongodb").ObjectId;
+var ObjectId = require('mongodb').ObjectId;
+var Faker = require('Faker');
+
+console.log(Faker.Name.firstName());
 
 // Connect to MongoDB via Mongoose
 seeder.connect('mongodb://localhost', function () {
@@ -27,133 +30,158 @@ seeder.connect('mongodb://localhost', function () {
 
 });
 
-// Data array containing seed data - documents organized by Model
+var products = [];
+var posts = [];
+var comments = [];
+var users = [];
 
 var companyDocuments = [
 
     {
-        _id: ObjectId("5126bc054aed4daf9e2ab773"),
+        _id: 1,
         name: 'Facebook',
         icon: "fa-facebook-official",
-        products: [ObjectId("5126bc054aed4daf9e2ab793")]
+        products: []
     },
     {
-        _id: ObjectId("5126bc054aed4daf9e2ab774"),
+        _id: 2,
         name: 'Google',
-        icon: "fa-google"
+        icon: "fa-google",
+        products: []
     },
     {
-        _id: ObjectId("5126bc054aed4daf9e2ab775"),
+        _id: 3,
         name: 'Twitter',
-        icon: "fa-twitter"
+        icon: "fa-twitter",
+        products: []
     },
     {
-        _id: ObjectId("5126bc054aed4daf9e2ab776"),
+
+        _id: 4,
         name: 'Slack',
-        icon: "fa-slack"
+        icon: "fa-slack",
+        products: []
     },
     {
-        _id: ObjectId("5126bc054aed4daf9e2ab777"),
+        _id: 5,
         name: 'Amazon',
-        icon: "fa-amazon"
+        icon: "fa-amazon",
+        products: []
     },
 ];
-var data = [
-        {
-            'model': 'Company',
-            'documents': companyDocuments
-        },
-        {
-            'model': 'User',
-            'documents': [
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab778"),
-                    name: 'Brian',
-                    username: 'brianuser',
-                    password: bcrypt.hashSync('brianpass'),
-                },
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab779"),
-                    name: 'Zach',
-                    username: 'zachuser',
-                    password: bcrypt.hashSync('zachpass'),
-                },
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab780"),
-                    name: 'Ryan',
-                    username: 'ryanuser',
-                    password: bcrypt.hashSync('ryanpass'),
-                },
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab781"),
-                    name: 'Evan',
-                    username: 'evanuser',
-                    password: bcrypt.hashSync('evanpass'),
-                },
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab782"),
-                    name: 'Bob',
-                    username: 'bobuser',
-                    password: bcrypt.hashSync('bobpass'),
-                },
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab783"),
-                    name: 'Loser1',
-                    username: 'loseruser',
-                    password: bcrypt.hashSync('loserpass'),
-                },
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab784"),
-                    name: 'test',
-                    username: 'test',
-                    password: bcrypt.hashSync('test')
-                }
-            ]
-        },
-        {
-            model: 'Post',
-            documents: [
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab899"),
-                    productId: ObjectId("5126bc054aed4daf9e2ab793"),
-                    postingUser: ObjectId("5126bc054aed4daf9e2ab778"),
-                    userUpvotes: [
-                        ObjectId("5126bc054aed4daf9e2ab779"),
-                        ObjectId("5126bc054aed4daf9e2ab780"),
-                        ObjectId("5126bc054aed4daf9e2ab781"),
-                        ObjectId("5126bc054aed4daf9e2ab782")
-                    ],
-                    postMessage: "I want FB to have a dislike button",
-                    comments: [ObjectId("5126bc054aed4daf9e2ab900")]
-                },
-            ]
-        },
-        {
-            model: 'Product',
-            documents: [
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab793"),
-                    company: ObjectId("5126bc054aed4daf9e2ab773"),
-                    description: "Facebook News Feed",
-                    posts: [ObjectId("5126bc054aed4daf9e2ab899")]
-                },
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab794"),
-                    company: ObjectId("5126bc054aed4daf9e2ab773"),
-                    description: "Instagram"
-                }
-            ]
-        },
-        {
-            model: 'Comment',
-            documents: [
-                {
-                    _id: ObjectId("5126bc054aed4daf9e2ab900"),
-                    text: "ASDfsadfdsafds",
-                    posterId: ObjectId("5126bc054aed4daf9e2ab778"),
-                    post: ObjectId("5126bc054aed4daf9e2ab899")
-                }
-            ]
+
+function createUser(id) {
+
+    return {_id: id, name: Faker.Name.findName(), username: Faker.Name.lastName(), password: bcrypt.hashSync('test')};
+}
+
+
+var i = 0;
+for (; i < 20;) {
+
+    users.push(createUser(++i));
+
+}
+
+console.log(users);
+
+function createProduct(cId, id) {
+
+    companyDocuments[cId-1].products.push(id);
+
+    return {_id: id, company: cId, img: "abc123", description: Faker.Lorem.sentences(2), name: Faker.Address.streetName(), posts: []};
+
+}
+
+for (i = 0; i < 50;) {
+
+    products.push(createProduct(companyDocuments[i%5]._id, ++i));
+}
+
+console.log(products);
+
+function createPost(pId, uId, id) {
+
+    var uV = [];
+    var dV = [];
+
+    products[pId-1].posts.push(id);
+
+    for (var x = 0; x < Math.floor(Math.random())*19; x++) {
+
+        if (x%2) {
+            uV.push(users[x]._id);
+        } else {
+
+            dV.push(users[x]._id);
         }
-    ]
-    ;
+    }
+
+    var post = (Math.floor(Math.random())*100 > 50) ? Faker.Lorem.sentences(Math.floor(Math.random()) * 4): Faker.Lorem.paragraphs(Math.floor(Math.random()) * 3);
+
+    return {
+        _id: id,
+        user: uId,
+        product: pId,
+        up_votes: uV,
+        down_votes: dV,
+        post: post,
+        comments: [],
+    };
+}
+
+
+for (i = 0; i < 300;) {
+
+
+    posts.push(createPost(products[Math.floor(Math.random()) * 50]._id, users[Math.floor(Math.random()) * 20]._id, ++i));
+}
+
+console.log(posts);
+
+function createComment(pId, uId, id) {
+
+    posts[pId -1].comments.push(id);
+
+    var text = (Math.floor(Math.random())*100 > 50) ? Faker.Lorem.sentences(Math.floor(Math.random()) * 3): Faker.Lorem.paragraphs(Math.floor(Math.random()) * 2);
+
+    return {
+        text: text,
+        posterId: uId,
+        post: pId,
+        _id: id
+    }
+
+}
+
+for (i = 0; i < 1500;) {
+
+    comments.push(createComment(posts[Math.floor(Math.random()) * 300]._id, users[Math.floor(Math.random()) * 20]._id, ++i));
+}
+
+console.log(comments);
+
+
+// Data array containing seed data - documents organized by Model
+
+var data = [
+    {
+        model: 'Company',
+        documents: companyDocuments
+    },
+    {
+        model: 'User',
+        documents: users
+    },{
+        model: 'Post',
+        documents: posts
+    },{
+        model: 'Comment',
+        documents: comments
+    },
+    {
+
+        model: 'Product',
+        documents: products
+    }
+];

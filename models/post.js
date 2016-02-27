@@ -6,12 +6,12 @@ var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
         user: {
-            type: Schema.ObjectId, ref: 'User'
+            type: Number, ref: 'User'
         },
-        up_votes: [{type: Schema.ObjectId, ref: 'User'}],
-        down_votes: [{type: Schema.ObjectId, ref: 'User'}],
+        up_votes: [{type: Number, ref: 'User'}],
+        down_votes: [{type: Number, ref: 'User'}],
         post: String,
-        comments: [{type: Schema.ObjectId, ref: 'Comment'}]
+        comments: [{type: Number, ref: 'Comment'}]
 });
 
 

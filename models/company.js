@@ -10,7 +10,7 @@ var companySchema = new Schema({
     icon: String,
     large_img_path: String,
     description: String,
-    products: [{type: Schema.Types.ObjectId, ref: 'Products'}]
+    products: [{type: Number, ref: 'Products'}]
 
 });
 
