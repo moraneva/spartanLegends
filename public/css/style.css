@@ -57,7 +57,7 @@ body{
 }
 
 .comment{
-  background-color: #bbe3f3;
+  background-color: #ececec;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
@@ -107,3 +107,14 @@ body{
   height: 40px;
 }
 
+.shadow {
+  -moz-box-shadow:    1px 1px 2px 2px #ccc;
+  -webkit-box-shadow: 1px 1px 2px 2px #ccc;
+  box-shadow:         1px 1px 2px 2px #ccc;
+}
+
+.custom-row{
+  margin: 0;
+  padding-left: 0;
+
+}
