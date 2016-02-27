@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //AUTH Middleware
 app.post('*', function (req, res, next) {
 
-    if (req.path == '/auth/login') {
+    if (req.path == '/auth/login' || req.path == 'auth/register') {
 
         next();
     } else {
