@@ -6,46 +6,42 @@ var app = angular.module('myApp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider.when('/login', {
-            templateUrl: '/views/login.html'
-        }).
+        templateUrl: '/views/login.html'
+    }).when('/companies', {
+        templateUrl: '/views/companies.html',
+        controller: 'companyListController'
+    }).when('/company/:companyName', {
+        templateUrl: '/views/company.html',
+        controller: 'companyController'
+    }).otherwise({
+        redirectTo: '/companies'
 
-        when('/companies', {
-            templateUrl: '/views/companies.html',
-            controller: 'companiesCtrl'
-        }).
-
-        when('/company' , {
-            templateUrl: '/views/company.html',
-            controller: 'companyCtrl'
-        }).
-
-        otherwise({
-            redirectTo: '/companies'
-
-        });
+    });
 
 });
-
 
 app.controller('companiesCtrl', function ($scope) {
 
     $scope.companies =
         [
-            {name:'Facebook', icon:"fa-facebook-official"},
-            {name:'Twitter', icon: "fa-twitter" },
-            {name:"Slack", icon:"fa-slack"},
-            {name:"Google", icon: "fa-google"},
-            {name:"Amazon", icon:"fa-amazon"}
+            {name: 'Facebook', icon: "fa-facebook-official"},
+            {name: 'Twitter', icon: "fa-twitter"},
+            {name: "Slack", icon: "fa-slack"},
+            {name: "Google", icon: "fa-google"},
+            {name: "Amazon", icon: "fa-amazon"}
         ]
 });
 
-app.controller('companyCtrl', function($scope) {
+app.controller('companyCtrl', function ($scope) {
 
     //get functions
-    $scope.company = {name: "Facebook", icon:"fa-facebook-official"};
-    $scope.products = ["Groups", "Pages", "News Feed", "Messenger", "Instagram", "testing1", "testing2", "testing3","testing4", "testing5","testing6","Groups2", "Pages2", "Groups3", "Pages3", "Groups4", "Pages4", "Groups5", "Pages5", "Groups6", "Pages6"];
-    $scope.ideas = [{title: "This is the best idea", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis purus eu mollis porta. Sed sed laoreet dui, a suscipit urna. Quisque facilisis purus sed nulla condimentum, nec malesuada nibh placerat. Integer ultrices pulvinar libero auctor hendrerit. Praesent varius tempus lobortis. Mauris tempor magna nunc, ac varius erat vulputate non. Mauris semper tortor consectetur leo fermentum mattis. Suspendisse vitae faucibus justo. Aliquam vitae dignissim nibh, eu sodales eros. " +
-    "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed interdum diam sapien. Mauris tempus tellus et tincidunt pulvinar. Duis vel elementum lacus, ut sodales metus. Proin elementum erat in imperdiet ultricies." }];
+    $scope.company = {name: "Facebook", icon: "fa-facebook-official"};
+    $scope.products = ["Groups", "Pages", "News Feed", "Messenger", "Instagram", "testing1", "testing2", "testing3", "testing4", "testing5", "testing6", "Groups2", "Pages2", "Groups3", "Pages3", "Groups4", "Pages4", "Groups5", "Pages5", "Groups6", "Pages6"];
+    $scope.ideas = [{
+        title: "This is the best idea",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis purus eu mollis porta. Sed sed laoreet dui, a suscipit urna. Quisque facilisis purus sed nulla condimentum, nec malesuada nibh placerat. Integer ultrices pulvinar libero auctor hendrerit. Praesent varius tempus lobortis. Mauris tempor magna nunc, ac varius erat vulputate non. Mauris semper tortor consectetur leo fermentum mattis. Suspendisse vitae faucibus justo. Aliquam vitae dignissim nibh, eu sodales eros. " +
+        "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed interdum diam sapien. Mauris tempus tellus et tincidunt pulvinar. Duis vel elementum lacus, ut sodales metus. Proin elementum erat in imperdiet ultricies."
+    }];
 
     $scope.getPercent = function () {
 
@@ -75,7 +71,7 @@ app.controller('companyCtrl', function($scope) {
         $scope.percent = $scope.getPercent();
     };
 
-    $scope.toggleComments = function() {
+    $scope.toggleComments = function () {
 
         $scope.commentFlag = !$scope.commentFlag;
 
@@ -89,7 +85,6 @@ app.controller('companyCtrl', function($scope) {
         });
 
         $scope.newComment.comment = null;
-
 
     };
 

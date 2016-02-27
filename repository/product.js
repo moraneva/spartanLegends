@@ -4,12 +4,13 @@
 var Product = require('../models/product');
 var Post = require('../models/post');
 var Comment = require('../models/comment');
+var User = require('../models/user');
 var ObjectId = require('mongodb').ObjectId;
 ProductRepository = module.exports;
 
 ProductRepository.getProduct = function (productId, callback) {
 
-    Product.findOne({_id: ObjectId(productId)}).populate('posts')
+    Product.findOne({_id: productId}).populate('posts')
         .exec(function (err, product) {
             var options = {
                 path: 'posts.comments',
@@ -17,14 +18,22 @@ ProductRepository.getProduct = function (productId, callback) {
             };
             Product.populate(product, options,
                 function (err, product) {
-                    if (!err) {
+                    options = {
+                        path: "posts.comments.posterId",
+                        model: "User"
+                    };
+                    Product.populate(product, options,
+                        function (err, product) {
+                            if (!err) {
 
-                        callback(product);
-                    }
-                    else {
+                                callback(product);
+                            }
+                            else {
 
-                        callback(-1);
-                    }
-                })
+                                callback(-1);
+                            }
+
+                        });
+                });
         });
 };

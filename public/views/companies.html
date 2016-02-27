@@ -1,14 +1,14 @@
-<div class="main-wrapper" ng-style="{width: 25%}">
+<div class="main-wrapper">
     <div ng-repeat="company in companies" class="company-list">
 
-    <div class="panel panel-default">
-        <a href="/company/{{company.name}}">
-            <div class="panel-heading company-header">
-                <span class="fa fa-3x" ng-class="company.icon"></span>
-                <span class="panel-title company-name">{{company.name}}</span>
-            </div>
-        </a>
-    </div>
+        <div class="panel panel-default">
+            <a href="#/company/{{company.name}}">
+                <div class="panel-heading company-header">
+                    <span class="fa fa-3x" ng-class="company.icon"></span>
+                    <span class="panel-title company-name">{{company.name}}</span>
+                </div>
+            </a>
+        </div>
     </div>
 
 </div>

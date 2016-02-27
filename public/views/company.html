@@ -1,79 +1,82 @@
-
-    <div class="row">
-        <div class= "col-sm-3">
+<div class="row">
+    <div class="col-sm-3">
         <div class="panel panel-default sidebar">
             <!-- Default panel contents -->
             <div class="panel-heading">Products</div>
 
             <!-- List group -->
             <ul class="list-group">
-                <li ng-repeat="product in products" class="list-group-item product">{{product}}</li>
+                <li ng-repeat="product in products" class="list-group-item product"
+                    ng-click="onClickProduct(product)">
+                    {{product.name}}
+                </li>
             </ul>
         </div>
+    </div>
+
+    <div class="col-sm-9">
+        <div ng-repeat="post in selectedProduct.posts track by $index" class="panel panel-default"
+             ng-repeat="idea in ideas">
+            <div class="panel-heading custom-heading">
+                <div class="progress" ng-class="{noColor: getPercent(post) == 'NaN%'}">
+                    <div class="progress-bar progress-bar-success" role="progressbar"
+                         ng-style="{width: getPercent(post)}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger noColor" role="progressbar">
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <h2>{{post.title}}</h2>
+
+                <p>
+                    {{post.post}}
+                </p>
+
+                <button type="button" class="btn btn-success" ng-click="liked(post)">
+                    <i class="fa fa-thumbs-up fa-2x"></i>
+                </button>
+
+                Likes:{{post.up_votes.length}}
+
+                <button type="button" class="btn btn-danger" ng-click="disliked(post)">
+                    <i class="fa fa-thumbs-down fa-2x"></i>
+                </button>
+
+                Dislikes:{{post.down_votes.length}}
+
+                <br/>
+                <br/>
+                <hr/>
+
+                <button class="btn btn-default" ng-click="toggleComments(post)" ng-show="commentFlag[post._id] == 0">
+                    Show Comments
+                </button>
+                <div class="comments" ng-repeat="eachComment in post.comments" ng-hide="commentFlag[post._id] == 0">
+                    <h4>{{eachComment.posterId.username}}</h4>
+                    <div class="comment">
+                        {{eachComment.text}}
+                    </div>
+                </div>
+                <button class="btn btn-default" ng-click="toggleComments(post)" ng-hide="commentFlag[post._id] == 0">
+                    Hide Comments
+                </button>
+
+            </div>
+
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Add a comment" type="text" ng-model="newComment[post._id]">
+                            <span class="input-group-addon">
+                                <a ng-click="addComment(post)"><i class="fa fa-edit"></i></a>
+                            </span>
+                </div>
+            </div>
+
         </div>
 
-
-        <div class="col-sm-9">
-            <div class="panel panel-default" ng-repeat="idea in ideas">
-                <div class="panel-heading custom-heading">
-                    <div class="progress" ng-class="{noColor: percent == 'NaN%'}">
-                        <div class="progress-bar progress-bar-success" role="progressbar" ng-style="{width: percent}">
-                        </div>
-                        <div class="progress-bar progress-bar-danger noColor" role="progressbar">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="panel-body">
-                    <h2>{{idea.title}}</h2>
-
-                    <p>
-                        {{idea.description}}
-                    </p>
-
-                    <button type="button" class="btn btn-success" ng-click="liked()">
-                        <i class="fa fa-thumbs-up fa-2x"></i>
-                    </button>
-
-                    Likes:{{likes}}
-
-                    <button type="button" class="btn btn-danger" ng-click="disliked()">
-                        <i class="fa fa-thumbs-down fa-2x"></i>
-                    </button>
-
-                    Dislikes:{{dislikes}}
-
-                    <br/>
-                    <br/>
-                    <hr/>
-
-                    <button class="btn btn-default" ng-click="toggleComments()" ng-show="commentFlag == 0">Show Comments</button>
-                    <button class="btn btn-default" ng-click="toggleComments()" ng-hide="commentFlag == 0">Hide Comments</button>
-                    <div class="comments" ng-repeat="eachComment in comments" ng-hide="commentFlag == 0">
-                        <h4>{{eachComment.user}}</h4>
-                        <div class="comment">
-                            {{eachComment.comment}}
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="panel-footer">
-                    <div class="input-group">
-                        <input class="form-control" placeholder="Add a comment" type="text" ng-model="newComment.comment">
-                            <span class="input-group-addon">
-                                <a ng-click="addComment()"><i class="fa fa-edit"></i></a>
-                            </span>
-                    </div>
-                </div>
-
-                </div>
-
-
-
-
     </div>
-    </div>
+</div>
 
 
