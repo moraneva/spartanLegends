@@ -8,4 +8,5 @@ app.controller('companyListController', ["$scope", "companyService", "productSer
         companyService.getCompanies().then(function (companies) {
             $scope.companies = companies;
         });
+
     }]);

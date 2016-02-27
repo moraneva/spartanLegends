@@ -122,7 +122,7 @@ function createPost(pId, uId, id) {
         }
     }
 
-    var post = (Math.floor(Math.random() * 100) > 50) ? Faker.Lorem.sentences(Math.floor(Math.random() * 4)) : Faker.Lorem.paragraphs(Math.floor(Math.random()) * 3);
+    var post = (Math.floor(Math.random() * 100) > 50) ? Faker.Lorem.sentences(Math.floor(Math.random() * 4 + 1)) : Faker.Lorem.paragraphs(Math.floor(Math.random()) * 3 + 1);
 
     return {
         _id: id,
@@ -131,6 +131,7 @@ function createPost(pId, uId, id) {
         up_votes: uV,
         down_votes: dV,
         post: post,
+        title: Faker.Company.companyName(),
         comments: [],
     };
 }

@@ -18,14 +18,13 @@ router.get('/', function (req, res) {
         }
     });
 
-
 });
 
 router.get('/:name', function (req, res) {
 
-    company.getCompany(req.params.name, function (err, document) {
+    company.getCompany(req.params.name, function (document) {
 
-        if (err != -1) {
+        if (document != -1) {
 
             res.send(document);
         } else {
