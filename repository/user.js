@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 
-function getUser(userName) {
+module.getUser = function (userName) {
 
     User.findOne({username: userName}, '', function (err, user) {
 

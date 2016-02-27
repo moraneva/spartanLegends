@@ -6,7 +6,7 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
-var auth = require('..services/auth');
+var auth = require('../services/auth');
 var uuid = require('node-uuid');
 
 var secretKey = uuid.v4();
