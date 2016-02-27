@@ -6,8 +6,11 @@ var Schema = mongoose.Schema;
 
 var productSchema = new Schema({
         company: {
-            type: Schema.ObjectId, ref: 'Person'
-        }
+            type: Schema.ObjectId, ref: 'Company'
+        },
+        productImg: String,
+        description: String,
+        otherText: String
     })
     ;
 
