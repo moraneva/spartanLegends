@@ -1,8 +1,8 @@
 <div ng-repeat="company in companies" class="company-list">
 
     <div class="panel panel-default">
-        <a>
-            <div class="panel-heading company-header">
+        <a href="/company/{{company.name}}">
+            <div class="panel-heading company-header" >
                 <span class="fa fa-3x" ng-class="company.icon"></span>
                 <span class="panel-title company-name">{{company.name}}</span>
             </div>
