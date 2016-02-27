@@ -8,7 +8,7 @@ app.factory('commentService', function ($http, $q) {
     service.saveComment = function (comment) {
         var deferred = $q.defer();
 
-        $http.post('/comment', comment).then(function (comment) {
+        $http.post('/comment/', comment).then(function (comment) {
 
             deferred.resolve(comment);
 

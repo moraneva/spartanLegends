@@ -2,7 +2,7 @@
  * Created by zacharyrosenthal on 2/27/16.
  */
 var Post = require('../models/post');
-
+var Comment = require('../models/comment');
 PostRepository = module.exports;
 
 PostRepository.createPost = function (callback) {
@@ -12,7 +12,12 @@ PostRepository.createPost = function (callback) {
     post.save(callback(err, post))
 };
 
-PostRepository.getPost = function (postId, callback) {
+PostRepository.getPost = function (postId,comment, callback) {
 
-    Post.findById(postId, callback(err, post));
+    Post.findOne({_id: postId}).populate('comments')
+        .exec(function (err, post) {
+            callback(err, post,comment)
+        });
+
+
 };

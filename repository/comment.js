@@ -2,36 +2,39 @@
  * Created by zacharyrosenthal on 2/27/16.
  */
 var Comment = require('../models/comment');
-var Post = require('../models/post');
+require('../models/post')
+var Post = require('../repository/post');
 
 CommentRepository = module.exports;
 
 CommentRepository.createComment = function (data, callback) {
 
+    console.log("here");
+
+    console.log(data);
     var comment = new Comment(data);
 
-    comment.save(function (err, comment) {
+    console.log(comment);
 
-        Post.getPost(data.postId, function (err, post) {
+    callback(-1, null);
+
+    /*Comment.create(data,function (err, comment) {
+
+        Post.getPost(data.post, function (err, post) {
 
             if (err) {
 
-                callback(-1);
+                callback(err, -1);
             } else {
 
-                post.push(comment._id);
+                post.comments.push(comment._id);
 
-                post.save( function (err) {
+                post.save(function (err) {
 
-                    if (err) {
+                    callback(err, comment);
 
-                        callback(-1);
-                    } else {
-
-                        callback(comment);
-                    }
                 });
             }
         });
-    });
+    });*/
 };

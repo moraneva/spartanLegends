@@ -63,7 +63,7 @@ app.use('/', routes);
 app.use('/auth', auth);
 app.use('/company', company);
 //app.use('/post', posts);
-//app.use('/comment', comments);
+app.use('/comment', comments);
 app.use('/product', products);
 
 // catch 404 and forward to error handler

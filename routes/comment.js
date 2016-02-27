@@ -5,16 +5,22 @@ var express = require('express');
 var router = express.Router();
 var comment = require('../repository/comment');
 
-router.post('/', function (req,res) {
+router.post('/', function (req, res) {
+
+    console.log("Params:  " + req.body.text);
 
     var data = {
-        text: req.text,
-        postId: req.postId,
-        userId: req.userId
+        _id: 12541,
+        text: req.body.text,
+        post: req.body.postId,
+        user: 1
     };
+
 
     comment.createComment(data, function (err, comment) {
 
+        console.log(err);
+        console.log(comment);
         if (err != -1) {
 
             res.send(comment);
@@ -24,3 +30,5 @@ router.post('/', function (req,res) {
         }
     });
 });
+
+module.exports = router;
