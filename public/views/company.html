@@ -15,7 +15,8 @@
 
 
     <div class="col-sm-9">
-        <div ng-repeat="post in selectedProduct.posts track by $index" class="panel panel-default rounded"
+
+        <div ng-repeat="post in selectedProduct.posts" class="panel panel-default rounded"
              ng-repeat="idea in ideas">
             <div class="panel-heading custom-heading rounded-top">
                 <div class="progress rounded-top" ng-class="{noColor: getPercent(post) == 'NaN%'}">
