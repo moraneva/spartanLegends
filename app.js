@@ -6,10 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var auth = require('./routes/auth');
 var authService = require('./services/auth.js');
 var user = require('./repository/user');
+var posts = require('./routes/post');
+var comments = require('./routes/comment');
+var products = require('./routes/product');
+var company = require('./routes/company');
 
 var app = express();
 
@@ -58,7 +61,10 @@ app.post('*', function (req, res, next) {
 //ROUTES
 app.use('/', routes);
 app.use('/auth', auth);
-app.use('/users', users);
+app.use('/company', company);
+//app.use('/post', posts);
+//app.use('/comment', comments);
+//app.use('/product', products);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

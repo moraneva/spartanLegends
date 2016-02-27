@@ -7,8 +7,11 @@ var Schema = mongoose.Schema;
 var companySchema = new Schema({
     name: String,
     thumbnail_img_path: String,
+    icon: String,
     large_img_path: String,
-    description: String
+    description: String,
+    products: [{type: Schema.Types.ObjectId, ref: 'Products'}]
+
 });
 
 var Company = mongoose.model('Company', companySchema);
