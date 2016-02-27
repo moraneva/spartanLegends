@@ -2,7 +2,25 @@
  * Created by ryancornillie on 2/26/16.
  */
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
+
+
+
+app.config(function($routeProvider) {
+    $routeProvider.
+        when('/home', {
+            templateUrl: '/js/home.html',
+            controller: 'myCtrl'
+        }).
+
+        when('/login', {
+            templateUrl: '/js/login.html'
+        }).
+
+        otherwise({
+            redirectTo: '/'
+        });
+});
 
 app.controller('myCtrl', function($scope) {
 
@@ -31,3 +49,8 @@ app.controller('myCtrl', function($scope) {
 
 
 });
+
+
+
+
+
