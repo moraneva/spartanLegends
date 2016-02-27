@@ -7,9 +7,9 @@ var company = require('../repository/company');
 
 router.get('/', function (req, res) {
 
-    company.getCompanies(function (err, docs) {
+    company.getCompanies(function (docs) {
 
-        if (err != -1) {
+        if (docs != -1) {
 
             res.send(docs);
         } else {
