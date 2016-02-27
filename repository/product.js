@@ -19,7 +19,7 @@ ProductRepository.getProduct = function (productId, callback) {
             Product.populate(product, options,
                 function (err, product) {
                     options = {
-                        path: "posts.comments.posterId",
+                        path: "posts.comments.user",
                         model: "User"
                     };
                     Product.populate(product, options,

@@ -11,3 +11,8 @@ PostRepository.createPost = function (callback) {
 
     post.save(callback(err, post))
 };
+
+PostRepository.getPost = function (postId, callback) {
+
+    Post.findById(postId, callback(err, post));
+};

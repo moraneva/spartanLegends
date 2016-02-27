@@ -55,7 +55,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
         $scope.addComment = function (post) {
             post.comments.push({
-                posterId: {username: "Ryan"},
+                user: {username: "Ryan"},
                 text: $scope.newComment[post._id]
             });
 

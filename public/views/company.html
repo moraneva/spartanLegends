@@ -55,7 +55,7 @@
                     Show Comments
                 </button>
                 <div class="comments" ng-repeat="eachComment in post.comments" ng-hide="commentFlag[post._id] == 0">
-                    <h4>{{eachComment.posterId.username}}</h4>
+                    <h4>{{eachComment.user.username}}</h4>
                     <div class="comment">
                         {{eachComment.text}}
                     </div>

@@ -147,11 +147,11 @@ function createComment(pId, uId, id) {
 
     posts[pId - 1].comments.push(id);
 
-    var text = (Math.floor(Math.random() * 100) > 50) ? Faker.Lorem.sentences(Math.floor(Math.random() * 3 + 1)) : Faker.Lorem.paragraphs(Math.floor(Math.random() * 2 + 1));
+    var text = (Math.floor(Math.random() * 100 + 1) > 50) ? Faker.Lorem.sentences(Math.floor(Math.random() * 3 + 1)) : Faker.Lorem.paragraphs(Math.floor(Math.random() * 2 + 1));
 
     return {
         text: text,
-        posterId: uId,
+        user: uId,
         post: pId,
         _id: id
     }
