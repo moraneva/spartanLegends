@@ -54,6 +54,11 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
         };
 
         $scope.addComment = function (post) {
+            if (typeof(Storage) !== "undefined") {
+                if (sessionStorage.userId) {
+                    var comment = {};
+                }
+            }
             post.comments.push({
                 posterId: {username: "Ryan"},
                 text: $scope.newComment[post._id]
