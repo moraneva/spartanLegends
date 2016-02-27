@@ -36,11 +36,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //AUTH Middleware
-app.post( function (req, res, next) {
+app.get('*', function (req, res, next) {
 
-next();
+    if (req.path == '/auth/login') {
 
-
+        next();
+    } else {
+        next();
+        //verify(req.get('AuthToken'), next());
+    }
 });
 
 //ROUTES

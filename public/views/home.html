@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Panel title</h3>
+        </div>
+        <div class="panel-body">
+            <button type="button" class="btn btn-success" ng-click="liked()">
+                <i class="fa fa-thumbs-up fa-2x"></i>
+            </button>
+
+            Likes:{{likes}}
+
+            <button type="button" class="btn btn-danger" ng-click="disliked()">
+                <i class="fa fa-thumbs-down fa-2x"></i>
+            </button>
+
+            Dislikes:{{dislikes}}
+
+            <br/>
+            <br/>
+            {{percent}}
+            <div class="progress" ng-class="{noColor: percent == 'NaN%'}">
+                <div class="progress-bar progress-bar-success" role="progressbar" ng-style="{width: percent}">
+                </div>
+                <div class="progress-bar progress-bar-danger noColor" role="progressbar">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+

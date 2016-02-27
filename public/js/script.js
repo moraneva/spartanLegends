@@ -2,11 +2,22 @@
  * Created by ryancornillie on 2/26/16.
  */
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
+
+app.config(function ($routeProvider) {
+    $routeProvider.when('/home', {
+        templateUrl: '/views/home.html',
+        controller: 'myCtrl'
+    }).when('/login', {
+        templateUrl: '/views/login.html'
+    }).otherwise({
+        redirectTo: '/'
+    });
+});
 
 app.controller('myCtrl', ["$scope", "loginService", function ($scope, loginService) {
 
-    //loginService.authenticate("brianuser", "brianpass");
+    loginService.authenticate("brianuser", "brianpass");
 
     $scope.getPercent = function () {
 
@@ -29,5 +40,5 @@ app.controller('myCtrl', ["$scope", "loginService", function ($scope, loginServi
         $scope.dislikes++;
         $scope.percent = $scope.getPercent();
     };
-
 }]);
+

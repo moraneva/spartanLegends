@@ -21,7 +21,6 @@ app.factory('loginService', function ($http, $q) {
                 else {
 
                 }
-                console.log(token);
             },
             function error() {
 

@@ -4,22 +4,37 @@
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../repository/user');
+var uuid = require('node-uuid');
+
+var secretKey = uuid.v4();
 
 Auth = module.exports;
 
 Auth.authenticate = function (username, password, callback) {
 
-    var user = User.getUser(username, function (user) {
+    User.getUser(username, function (user) {
 
         if (bcrypt.compareSync(password, user.password)) {
 
-            return callback(user._id);
+                var claims = {
+                    sub: user._id
+                };
+
+                jwt.sign(claims,secretKey,{} ,function (token) {
+
+                    callback(token);
+                });
+
         } else {
 
-            return callback(false);
+            callback(false);
         }
-
     });
+};
+
+Auth.verify = function (token, callback) {
+
+
 
 };
 
