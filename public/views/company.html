@@ -3,10 +3,10 @@
     <div class="col-sm-3">
          <div class="panel panel-default rounded test">
 
-          <div class="panel-heading rounded-top" style="width: 101%;" >Products</div>
+          <div class="panel-heading rounded-top" style="width: 101%;" >Products<input class="searchBar" placeholder="search" ng-model="searchKey"></div>
 
                  <ul class="list-group sidebar test">
-                <li ng-repeat="product in products" class="list-group-item product rounded" ng-click="onClickProduct(product)">
+                <li ng-repeat="product in products | filter:{name:searchKey}" class="list-group-item product rounded" ng-click="onClickProduct(product)" ng>
                     {{product.name}}
                 </li>
                  </ul>
@@ -16,7 +16,7 @@
 
     <div class="col-sm-9">
 
-        <div ng-repeat="post in selectedProduct.posts" class="panel panel-default rounded"
+        <div ng-repeat="post in selectedProduct.posts | filter:{title:searchKey}" class="panel panel-default rounded"
              ng-repeat="idea in ideas">
             <div class="panel-heading custom-heading rounded-top">
                 <div class="progress rounded-top" ng-class="{noColor: getPercent(post) == 'NaN%'}">
