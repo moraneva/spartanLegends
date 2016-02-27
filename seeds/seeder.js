@@ -92,7 +92,8 @@ var data = [
                 'name': 'Loser',
                 'username': 'loseruser',
                 'password': 'loserpass',
-            }
+            },
+            {'name': 'test', 'username':'test', 'password':'test'}
         ]
     },
 ];

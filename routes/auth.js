@@ -7,18 +7,6 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 var auth = require('../services/auth');
 
-router.get('/', function (req, res) {
-
-    var pword = bcrypt.hashSync('bacon');
-
-    var user = new User({name: 'Zach Rosenthal', username: 'user1', password: "bacon"});
-
-    user.save();
-    console.log("auth: " + JSON.stringify(auth));
-
-    res.send('success');
-});
-
 /* GET home page. */
 router.post('/login', function (req, res) {
     var userData = req.body;
