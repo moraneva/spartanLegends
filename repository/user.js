@@ -13,4 +13,4 @@ module.getUser = function (userName) {
 
         return user;
     });
-}
+};
