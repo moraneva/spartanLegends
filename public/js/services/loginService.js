@@ -14,11 +14,18 @@ app.factory('loginService', function ($http, $q) {
         };
 
         $http.post('/auth/login', userData).then(
+<<<<<<< Updated upstream
             function success(response) {
                 $http.defaults.headers.post.AuthToken = response.data.token;
                 if (typeof(Storage) !== "undefined") {
                     if (response.data) {
                         sessionStorage.userId = response.data.id;
+=======
+            function success(response) {$http.defaults.headers.post.AuthToken = response.data;
+                if (typeof(Storage) !== "undefined") {
+                    if (response.data) {
+                        sessionStorage.loggedIn = 1;
+>>>>>>> Stashed changes
 
                         deferred.resolve(true);
                     }

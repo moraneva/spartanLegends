@@ -5,18 +5,26 @@
 var app = angular.module('myApp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
-    $routeProvider.when('/login', {
-        templateUrl: '/views/login.html'
-    }).when('/companies', {
-        templateUrl: '/views/companies.html',
-        controller: 'companyListController'
-    }).when('/company/:companyName', {
-        templateUrl: '/views/company.html',
-        controller: 'companyController'
-    }).otherwise({
-        redirectTo: '/companies'
+    $routeProvider.
+        when('/companies', {
+            templateUrl: '/views/companies.html',
+            controller: 'companiesCtrl'
+        }).
 
-    });
+        when('/company' , {
+            templateUrl: '/views/company.html',
+            controller: 'companyCtrl'
+        }).
+
+        otherwise({
+            redirectTo: '/companies'
+
+        });
+
+});
+
+app.controller('loginCtrl', function ($scope) {
+
 
 });
 
