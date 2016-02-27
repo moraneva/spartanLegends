@@ -1,19 +1,18 @@
 
 <div class="row custom-row">
     <div class="col-sm-3">
-        <div class="panel panel-default sidebar rounded">
-            <!-- Default panel contents -->
-            <div class="panel-heading rounded-top" style="position: static">Products</div>
+         <div class="panel panel-default rounded test">
 
-            <!-- List group -->
-            <ul class="list-group sidebar">
-                <li ng-repeat="product in products" class="list-group-item product rounded"
-                    ng-click="onClickProduct(product)">
+          <div class="panel-heading rounded-top" style="width: 101%;" >Products</div>
+
+                 <ul class="list-group sidebar test">
+                <li ng-repeat="product in products" class="list-group-item product rounded" ng-click="onClickProduct(product)">
                     {{product.name}}
                 </li>
-            </ul>
-        </div>
+                 </ul>
+             </div>
     </div>
+
 
     <div class="col-sm-9">
         <div ng-repeat="post in selectedProduct.posts track by $index" class="panel panel-default rounded"
