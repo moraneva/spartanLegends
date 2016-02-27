@@ -53,7 +53,7 @@ body{
 }
 
 .noColor{
-  background-color: gainsboro !important;
+  background-color: #faf2a7 !important;
 }
 
 .comment{
@@ -95,12 +95,18 @@ body{
 .sidebar{
   margin-left: 0;
   height: 100%;
-  width: 25%;
+  width: 100%;
   overflow-y: auto;
-  position: fixed;
 
 }
 
+.test{
+  margin-left: 0;
+  height: 100%;
+  width: 25%;
+  position: fixed;
+
+}
 .custom-heading{
   margin: 0;
   padding: 0;
@@ -117,4 +123,21 @@ body{
   margin: 0;
   padding-left: 0;
 
+}
+
+.rounded{
+  border-radius: 10px;
+}
+
+.rounded-top{
+  border-radius: 10px 10px 0px 0px;
+}
+
+.rounded-bottom{
+  border-radius: 0px 0px 10px 10px;
+}
+
+.login{
+  width: 50%;
+  margin: 0 auto;
 }

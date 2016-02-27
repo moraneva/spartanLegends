@@ -1,22 +1,22 @@
 
     <div class="row custom-row">
         <div class= "col-sm-3">
-        <div class="panel panel-default sidebar">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Products</div>
+            <div class="panel panel-default test">
+                <!-- Default panel contents -->
+                <div class="panel-heading" style="position: static">Products</div>
 
-            <!-- List group -->
-            <ul class="list-group">
-                <li ng-repeat="product in products" class="list-group-item product">{{product}}</li>
-            </ul>
-        </div>
-        </div>
+                <!-- List group -->
+                <ul class="list-group sidebar">
+                    <li ng-repeat="product in products" class="list-group-item product">{{product}}</li>
+                </ul>
+            </div>
+    </div>
 
 
         <div class="col-sm-9" style="padding-left: 30px;">
-            <div class="panel panel-default" ng-repeat="idea in ideas">
-                <div class="panel-heading custom-heading">
-                    <div class="progress" ng-class="{noColor: percent == 'NaN%'}">
+            <div class="panel panel-default rounded" ng-repeat="idea in ideas">
+                <div class="panel-heading custom-heading rounded-top">
+                    <div class="progress rounded-top" ng-class="{noColor: percent == 'NaN%'}">
                         <div class="progress-bar progress-bar-success" role="progressbar" ng-style="{width: percent}">
                         </div>
                         <div class="progress-bar progress-bar-danger noColor" role="progressbar">
@@ -59,8 +59,8 @@
 
                 </div>
 
-                <div class="panel-footer">
-                    <div class="input-group">
+                <div class="panel-footer rounded-bottom">
+                    <div class="input-group rounded-bottom">
                         <input class="form-control" placeholder="Add a comment" type="text" ng-model="newComment.comment">
                             <span class="input-group-addon">
                                 <a ng-click="addComment()"><i class="fa fa-edit"></i></a>

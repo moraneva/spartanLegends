@@ -36,7 +36,7 @@ app.controller('companiesCtrl', function ($scope) {
             {name:"Slack", icon:"fa-slack"},
             {name:"Google", icon: "fa-google"},
             {name:"Amazon", icon:"fa-amazon"},
-            {name: "test", icon:"default"}
+            {name: "Default", icon:"default"}
         ]
 });
 
