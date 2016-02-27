@@ -43,7 +43,7 @@ app.get('*', function (req, res, next) {
         next();
     } else {
 
-        verify(req.get('AuthToken'), next());
+        verify(req.get('authToken'), next());
     }
 });
 
