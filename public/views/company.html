@@ -1,6 +1,6 @@
 
     <div class="row">
-        <div class="col-sm-3" style="margin-left: 20px;">
+        <div class= "col-sm-3">
         <div class="panel panel-default sidebar">
             <!-- Default panel contents -->
             <div class="panel-heading">Products</div>
@@ -13,19 +13,19 @@
         </div>
 
 
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <div class="panel panel-default" ng-repeat="idea in ideas">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{idea.title}}</h3>
-                </div>
-                <div class="panel-body">
-
+                <div class="panel-heading custom-heading">
                     <div class="progress" ng-class="{noColor: percent == 'NaN%'}">
                         <div class="progress-bar progress-bar-success" role="progressbar" ng-style="{width: percent}">
                         </div>
                         <div class="progress-bar progress-bar-danger noColor" role="progressbar">
                         </div>
                     </div>
+
+                </div>
+                <div class="panel-body">
+                    <h2>{{idea.title}}</h2>
 
                     <p>
                         {{idea.description}}
@@ -47,10 +47,12 @@
                     <br/>
                     <hr/>
 
-                    <div  ng-repeat="comment in comments">
-                        <h4>{{comment.user}}</h4>
+                    <button class="btn btn-default" ng-click="toggleComments()" ng-show="commentFlag == 0">Show Comments</button>
+                    <button class="btn btn-default" ng-click="toggleComments()" ng-hide="commentFlag == 0">Hide Comments</button>
+                    <div class="comments" ng-repeat="eachComment in comments" ng-hide="commentFlag == 0">
+                        <h4>{{eachComment.user}}</h4>
                         <div class="comment">
-                            {{comment.comment}}
+                            {{eachComment.comment}}
                         </div>
                     </div>
 
@@ -59,7 +61,7 @@
 
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input class="form-control" placeholder="Add a comment" ng-model="userComment" type="text">
+                        <input class="form-control" placeholder="Add a comment" type="text" ng-model="newComment.comment">
                             <span class="input-group-addon">
                                 <a ng-click="addComment()"><i class="fa fa-edit"></i></a>
                             </span>
@@ -69,59 +71,6 @@
                 </div>
 
 
-            <div class="panel panel-default" ng-repeat="idea in ideas">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{idea.title}}</h3>
-                </div>
-                <div class="panel-body">
-
-                    <div class="progress" ng-class="{noColor: percent == 'NaN%'}">
-                        <div class="progress-bar progress-bar-success" role="progressbar" ng-style="{width: percent}">
-                        </div>
-                        <div class="progress-bar progress-bar-danger noColor" role="progressbar">
-                        </div>
-                    </div>
-
-                    <p>
-                        {{idea.description}}
-                    </p>
-
-                    <button type="button" class="btn btn-success" ng-click="liked()">
-                        <i class="fa fa-thumbs-up fa-2x"></i>
-                    </button>
-
-                    Likes:{{likes}}
-
-                    <button type="button" class="btn btn-danger" ng-click="disliked()">
-                        <i class="fa fa-thumbs-down fa-2x"></i>
-                    </button>
-
-                    Dislikes:{{dislikes}}
-
-                    <br/>
-                    <br/>
-                    <hr/>
-
-                    <div  ng-repeat="comment in comments">
-                        <h4>{{comment.user}}</h4>
-                        <div class="comment">
-                            {{comment.comment}}
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="panel-footer">
-                    <div class="input-group">
-                        <input class="form-control" placeholder="Add a comment" ng-model="userComment" type="text">
-                            <span class="input-group-addon">
-                                <a ng-click="addComment()"><i class="fa fa-edit"></i></a>
-                            </span>
-                    </div>
-                </div>
-
-            </div>
 
 
     </div>

@@ -10,22 +10,28 @@ a:hover{
 }
 
 body{
-  background-color: #fff;
+  /*background-color: #fff;
   background-size: 100% 1.2em;
   -webkit-linear-gradient(#eee .05em, transparent .05em);
   background-image: -moz-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
   -moz-linear-gradient(#eee .05em, transparent .05em);
   background-image: linear-gradient(90deg, transparent 79px, #abced4 81px, transparent 81px),
   linear-gradient(#dcfdff .1em, transparent .1em);
-  linear-gradient(#dcfdff.1em, transparent .1em) 0 0 / 100% 1.2em #fff;
-  padding: 60px 0 0 0;
+  linear-gradient(#dcfdff.1em, transparent .1em) 0 0 / 100% 1.2em #fff;*/
+  background-color: #bbe3f3 ;
+  padding: 70px 0 0 0;
 
 }
 
 .logo{
 
   font-size: 300%;
+  color: #283131;
 
+}
+
+.logo:hover{
+  color: black;
 }
 
 .amatic{
@@ -41,6 +47,9 @@ body{
 
 .progress{
   background-color: #d9534f;
+  margin:0;
+  padding: 0;
+  height: 40px;
 }
 
 .noColor{
@@ -61,7 +70,9 @@ body{
 
 
 .company-header:hover{
-  background-color: #bbe3f3;
+  background-color: #283131;
+  color: white;
+  border-color: #283131;
 
 }
 
@@ -75,10 +86,16 @@ body{
 
 .sidebar{
   margin-left: 0;
-  height: 350px;
-  width: 300px;
+  height: 100%;
+  width: 25%;
   overflow-y: auto;
   position: fixed;
 
+}
+
+.custom-heading{
+  margin: 0;
+  padding: 0;
+  height: 40px;
 }
 

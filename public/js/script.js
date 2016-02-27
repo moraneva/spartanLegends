@@ -43,7 +43,7 @@ app.controller('companyCtrl', function($scope) {
 
     //get functions
     $scope.company = {name: "Facebook", icon:"fa-facebook-official"};
-    $scope.products = ["Groups", "Pages", "News Feed", "Messenger", "Instagram", "testing1", "testing2", "testing3","testing4", "testing5","testing6"];
+    $scope.products = ["Groups", "Pages", "News Feed", "Messenger", "Instagram", "testing1", "testing2", "testing3","testing4", "testing5","testing6","Groups2", "Pages2", "Groups3", "Pages3", "Groups4", "Pages4", "Groups5", "Pages5", "Groups6", "Pages6"];
     $scope.ideas = [{title: "This is the best idea", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mollis purus eu mollis porta. Sed sed laoreet dui, a suscipit urna. Quisque facilisis purus sed nulla condimentum, nec malesuada nibh placerat. Integer ultrices pulvinar libero auctor hendrerit. Praesent varius tempus lobortis. Mauris tempor magna nunc, ac varius erat vulputate non. Mauris semper tortor consectetur leo fermentum mattis. Suspendisse vitae faucibus justo. Aliquam vitae dignissim nibh, eu sodales eros. " +
     "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed interdum diam sapien. Mauris tempus tellus et tincidunt pulvinar. Duis vel elementum lacus, ut sodales metus. Proin elementum erat in imperdiet ultricies." }];
 
@@ -52,9 +52,11 @@ app.controller('companyCtrl', function($scope) {
         return ($scope.likes / ($scope.likes + $scope.dislikes) * 100).toString() + "%";
     };
 
+    $scope.newComment = {};
     $scope.test = "angular";
     $scope.likes = 0;
     $scope.dislikes = 0;
+    $scope.commentFlag = 0;
     $scope.percent = $scope.getPercent();
     $scope.comments = [{
         user: "Zach",
@@ -73,14 +75,23 @@ app.controller('companyCtrl', function($scope) {
         $scope.percent = $scope.getPercent();
     };
 
-    $scope.addComment = function () {
+    $scope.toggleComments = function() {
 
+        $scope.commentFlag = !$scope.commentFlag;
+
+    };
+
+    $scope.addComment = function () {
+        console.log($scope.newComment);
         $scope.comments.push({
             user: "Ryan",
-            comment: $scope.userComment
+            comment: $scope.newComment.comment
         });
 
-    }
+        $scope.newComment.comment = null;
+
+
+    };
 
 });
 
