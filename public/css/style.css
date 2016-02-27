@@ -6,6 +6,7 @@ a:hover{
   cursor: pointer;
   cursor: hand;
   color: black;
+  background-color: #bbe3f3;
 }
 
 body{
@@ -17,6 +18,8 @@ body{
   background-image: linear-gradient(90deg, transparent 79px, #abced4 81px, transparent 81px),
   linear-gradient(#dcfdff .1em, transparent .1em);
   linear-gradient(#dcfdff.1em, transparent .1em) 0 0 / 100% 1.2em #fff;
+  padding: 60px 0 0 0;
+
 }
 
 .logo{
@@ -55,12 +58,27 @@ body{
   font-size: 300%;
 }
 
-.company-list{
-  width: 50%;
-  margin: 0 auto;
-}
+
 
 .company-header:hover{
   background-color: #bbe3f3;
 
 }
+
+.product:hover {
+
+  background-color: #5bc0de;
+  cursor: pointer;
+  cursor: hand;
+
+}
+
+.sidebar{
+  margin-left: 0;
+  height: 350px;
+  width: 300px;
+  overflow-y: auto;
+  position: fixed;
+
+}
+

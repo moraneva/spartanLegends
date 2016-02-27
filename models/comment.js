@@ -9,8 +9,7 @@ var commentSchema = new Schema({
     posterId: {
         type: Schema.ObjectId, ref: 'User'
     },
-    post: {type: Schema.Types.ObjectId, ref: 'Post'},
-    password: String
+    post: {type: Schema.Types.ObjectId, ref: 'Post'}
 });
 
 var Comment = mongoose.model('Comment', commentSchema);
