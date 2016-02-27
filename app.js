@@ -35,6 +35,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//AUTH Middleware
+app.post( function (req, res, next) {
+
+next();
+
+
+});
+
 //ROUTES
 app.use('/', routes);
 app.use('/auth', auth);

@@ -5,15 +5,21 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../repository/user');
 
-module.authenticate = function (name, password) {
+Auth = module.exports;
 
-    var user = User.getUser(name);
+Auth.authenticate = function (name, password, callback) {
 
-    if (bcrypt.compareSync(password, user.password)) {
+    var user = User.getUser(name, function (user) {
 
-        return user._id;
-    } else {
+        if (bcrypt.compareSync(password, user.password)) {
 
-        return false;
-    }
+            return callback(user._id);
+        } else {
+
+            return callback(false);
+        }
+
+    });
+
 };
+

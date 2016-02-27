@@ -5,7 +5,6 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
-var User = require('../models/user');
 var auth = require('../services/auth');
 var uuid = require('node-uuid');
 
@@ -18,6 +17,8 @@ router.get('/', function (req, res) {
     var user = new User({name: 'Zach Rosenthal', username: 'user1', password: pword});
 
     user.save();
+    console.log("auth: " + JSON.stringify(auth));
+
 
     res.send('success');
 });
@@ -25,30 +26,25 @@ router.get('/', function (req, res) {
 /* GET home page. */
 router.get('/login', function (req, res) {
 
-    var userId = auth.authenticate(req.name, req.password);
+    auth.authenticate("user1", "bacon", function (userId) {
 
-    if (userId) {
+        if (userId) {
 
-        var claim = {
-            sub: userId
-        };
+            //console.log(userId);
 
-        var jwt = nJwt.create(claims,secretKey);
+            var claims = {
+                sub: userId
+            };
 
-        console.log(jwt);
+            jwt.sign(claims,secretKey,{} ,function (token) {
 
-        var token = jwt.compact();
+                res.send(token);
+            });
 
-        new Cookies(req,res).set('access_token',token,{
-            httpOnly: true,
-            secure: true      // for your production environment
-        });
-    }
+        }
 
 
-
-
-//    res.send('success2');
+    });
 
 });
 
