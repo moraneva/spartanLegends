@@ -1,8 +1,9 @@
 /**
  * Created by Owner on 2/27/2016.
  */
-app.controller('companyController', ["$scope", "$routeParams", "companyService", "productService",
-    function ($scope, $routeParams, companyService, productService) {
+app.controller('companyController', ["$scope", "$routeParams", "companyService",
+    "productService", "commentService",
+    function ($scope, $routeParams, companyService, productService, commentService) {
 
         function _init() {
             var companyName = $routeParams.companyName;
@@ -54,10 +55,24 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
         };
 
         $scope.addComment = function (post) {
-            post.comments.push({
-                user: {username: "Ryan"},
-                text: $scope.newComment[post._id]
-            });
+
+            if (typeof(Storage) !== "undefined") {
+                if (sessionStorage.userId) {
+                    var comment = {
+                        userId: sessionStorage.userId,
+                        postId: post._id,
+                        text: $scope.newComment[post._id]
+                    };
+
+                    commentService.saveComment(comment).then(function (comment) {
+                        post.comments.push(comment);
+                    });
+
+                }
+                else {
+                    alert('You are not logged in, you can not comment on posts.');
+                }
+            }
 
             $scope.newComment[post._id] = null;
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
+    <title>Idea Source</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<div ng-app="myApp">
+<div ng-app="myApp" ng-controller="loginController">
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -41,13 +41,52 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logout</a></li>
+                    <li ng-show =sessionStorage.loggedIn><a href="#">Logout</a></li>
+                    <li ng-hide =sessionStorage.loggedIn><a href="#login" data-toggle="modal">Login</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 
     <div ng-view></div>
+
+
+
+
+    <!-- Edit Group Name-->
+    <div class="modal fade rounded loginModal" id="login" tabindex="-1" role="dialog" >
+        <div class="modal-dialog rounded">
+            <div class="modal-content rounded">
+                <div class="modal-header modal-header-custom rounded-top">
+                    <span class="login">Login</span>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form style="text-align: center;">
+                        <div class="form-group">
+                            <h4><label for="username">Username</label></h4>
+                            <input type="text" ng-model="username" id="username" placeholder="username" style="width: 75%;">
+                        </div>
+                        <div class="form-group">
+                            <h4><label for="password">Password</label></h4>
+                            <input type="password" ng-model="password" id="password" placeholder="password" style="width: 75%; ">
+                        </div>
+                        <div style="padding: 25px">
+                            <button type="submit" style="width: 75%;" data-dismiss="modal" ng-click="login()" class="btn btn-success" style="margin-bottom: 10px;">Login</button>
+                            <button ng-click="postTest()" style="display: none">TEST</button>
+                        </div>
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 </div>
 <script src="/js/services/loginService.js"></script>
@@ -56,6 +95,7 @@
 <script src="/js/controllers/companyController.js"></script>
 <script src="/js/services/companyService.js"></script>
 <script src="/js/services/productService.js"></script>
+<script src="/js/services/commentService.js"></script>
 </body>
 
 </html>

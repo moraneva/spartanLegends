@@ -40,6 +40,7 @@ body{
 
 }
 
+
 .main-wrapper{
   width: 75%;
   margin: 0 auto;
@@ -137,7 +138,26 @@ body{
   border-radius: 0px 0px 10px 10px;
 }
 
+.register{
+  width: 40%;
+  padding: 30px;
+  margin: 10% auto;
+
+  background-color: whitesmoke;
+}
+
 .login{
-  width: 50%;
-  margin: 0 auto;
+  color: white;
+  font-size: 200%;
+  font-family: 'Amatic SC', cursive;
+}
+
+.modal-header-custom{
+  background-color: #5bc0de;
+}
+
+.loginModal{
+  padding: 15px;
+  margin-bottom: 10px;
+
 }

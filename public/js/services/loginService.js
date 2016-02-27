@@ -18,16 +18,11 @@ app.factory('loginService', function ($http, $q) {
                 $http.defaults.headers.post.AuthToken = response.data.token;
                 if (typeof(Storage) !== "undefined") {
                     if (response.data) {
-
-                        sessionStorage.loggedIn = response.data.id;
-                        deferred.resolve(true);
+                        sessionStorage.userId = response.data.id;
                     }
                     else {
                         deferred.resolve(false);
                     }
-                }
-                else {
-                    deferred.resolve(false);
                 }
             },
             function error() {
