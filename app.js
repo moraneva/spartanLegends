@@ -9,7 +9,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('auth.js');
 
-
 var app = express();
 
 var uristring =
