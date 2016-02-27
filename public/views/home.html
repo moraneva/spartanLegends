@@ -33,9 +33,28 @@
 
             <br/>
             <br/>
+            <hr/>
+
+            <div  ng-repeat="comment in comments">
+                <h4>{{comment.user}}</h4>
+                 <div class="comment">
+                     {{comment.comment}}
+                 </div>
+            </div>
+
 
         </div>
-    </div>
+
+        <div class="panel-footer">
+            <div class="input-group">
+                <input class="form-control" placeholder="Add a comment" ng-model="userComment" type="text">
+                    <span class="input-group-addon">
+                        <a ng-click="addComment()"><i class="fa fa-edit"></i></a>
+                    </span>
+            </div>
+        </div>
+
+</div>
 
 
 
