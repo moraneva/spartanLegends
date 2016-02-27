@@ -69,11 +69,15 @@ body{
 
 
 
-.company-header:hover{
+.company-header:hover {
   background-color: #283131;
   color: white;
   border-color: #283131;
+}
 
+
+.company-header{
+  border-radius: 20px;
 }
 
 .product:hover {
@@ -82,6 +86,10 @@ body{
   cursor: pointer;
   cursor: hand;
 
+}
+
+.rounded-panel{
+  border-radius: 20px;
 }
 
 .sidebar{
