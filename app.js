@@ -8,6 +8,8 @@ var mongoose = require("mongoose");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var authService = require('./services/auth.js');
+var user = require('./repository/user');
 
 var app = express();
 
@@ -36,14 +38,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //AUTH Middleware
-app.get('*', function (req, res, next) {
+app.post('*', function (req, res, next) {
 
     if (req.path == '/auth/login') {
 
         next();
     } else {
 
-        auth.verify(req.get('authToken'), next());
+        authService.verify(req.get('AuthToken'), function (payload) {
+
+            user.getUser({_id: payload.sub}, function (userObj) {
+                req.User = userObj;
+                next();
+            })
+        });
     }
 });
 

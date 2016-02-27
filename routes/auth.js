@@ -11,7 +11,7 @@ var auth = require('../services/auth');
 router.post('/login', function (req, res) {
     var userData = req.body;
 
-    auth.authenticate(userData.username, userData.password, function (retVal) {
+    Auth.authenticate(userData.username, userData.password, function (retVal) {
 
         res.send(retVal);
 
@@ -22,5 +22,11 @@ router.post('/login', function (req, res) {
 router.get('/logout', function (req, res) {
 
 });
+
+router.post('/test', function (req, res) {
+
+    res.send(req.User);
+});
+
 
 module.exports = router;

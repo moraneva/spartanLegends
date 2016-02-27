@@ -12,7 +12,7 @@ Auth = module.exports;
 
 Auth.authenticate = function (username, password, callback) {
 
-    User.getUser(username, function (user) {
+    User.getUser({username:username}, function (user) {
 
         if (bcrypt.compareSync(password, user.password)) {
 
@@ -34,11 +34,12 @@ Auth.authenticate = function (username, password, callback) {
 
 Auth.verify = function (token, callback) {
 
-    console.log(token);
+    jwt.verify(token, secretKey, {}, function (args,payload) {
 
-    jwt.verify(token, secretKey, {}, function (payload) {
+        console.log(payload);
 
-        console.log(payload)
+        callback(payload);
+
     });
 };
 
