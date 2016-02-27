@@ -5,7 +5,7 @@ app.factory('companyService', function ($http, $q) {
 
     var service = {};
 
-    service.getCompanyNames = function () {
+    service.getCompanies = function () {
         var deferred = $q.defer();
 
         $http.get('/company').then(
@@ -16,7 +16,7 @@ app.factory('companyService', function ($http, $q) {
 
         return deferred.promise;
     };
-    service.getOneCompanyName = function (name) {
+    service.getOneCompany = function (name) {
         var deferred = $q.defer();
 
         $http.get('/company/' + name).then(
@@ -27,6 +27,18 @@ app.factory('companyService', function ($http, $q) {
 
         return deferred.promise;
     };
+
+    service.createCompany = function (company){
+        var deferred = $q.defer();
+
+        $http.post('/company/',company).then(
+            function success(response) {
+
+            }
+        );
+
+        return deferred.promise;
+    }
 
     return service;
 });

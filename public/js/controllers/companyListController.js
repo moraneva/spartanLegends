@@ -5,7 +5,7 @@ app.controller('companyListController', ["$scope", "companyService", "productSer
     function ($scope, companyService, productService) {
 
         productService.getProduct("5126bc054aed4daf9e2ab793");
-        companyService.getCompanyNames().then(function (companies) {
+        companyService.getCompanies().then(function (companies) {
             $scope.companies = companies;
         });
     }]);

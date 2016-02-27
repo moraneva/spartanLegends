@@ -3,7 +3,5 @@
  */
 app.controller('companyController', ["$scope", "companyService",
     function ($scope, companyService) {
-
-
-
+        //company.createCompany(company)
     }]);

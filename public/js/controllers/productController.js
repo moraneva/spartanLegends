@@ -7,4 +7,6 @@ app.controller('productController', ["$scope", "$routeParams", "productService",
         productService.getProduct().then(function (product) {
             $scope.product = product;
         });
+
+        //productService.createProduct(products);
     }]);

@@ -17,5 +17,18 @@ app.factory('productService', function ($http, $q) {
         return deferred.promise;
     };
 
+    service.createProduct = function (product){
+        var deferred = $q.defer();
+
+        $http.post('/product/',product).then(
+            function success(response) {
+
+            }
+        );
+
+        return deferred.promise;
+    }
+
+
     return service;
 });
