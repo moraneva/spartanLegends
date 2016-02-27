@@ -1,0 +1,6 @@
+Vagrantfile
+.idea/*
+.DS_Store
+.DS_Store/
+.vagrant/
+.vagrant/*
