@@ -23,6 +23,14 @@ router.get('/logout', function (req, res) {
 
 });
 
+router.post('/register', function (req, res) {
+
+    Auth.register(req.data, function (retval) {
+
+
+    });
+});
+
 router.post('/test', function (req, res) {
 
     res.send(req.User);

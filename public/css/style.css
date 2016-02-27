@@ -53,11 +53,11 @@ body{
 }
 
 .noColor{
-  background-color: gainsboro !important;
+  background-color: #faf2a7 !important;
 }
 
 .comment{
-  background-color: #bbe3f3;
+  background-color: #ececec;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
@@ -69,11 +69,15 @@ body{
 
 
 
-.company-header:hover{
+.company-header:hover {
   background-color: #283131;
   color: white;
   border-color: #283131;
+}
 
+
+.company-header{
+  border-radius: 20px;
 }
 
 .product:hover {
@@ -84,18 +88,56 @@ body{
 
 }
 
+.rounded-panel{
+  border-radius: 20px;
+}
+
 .sidebar{
   margin-left: 0;
   height: 100%;
-  width: 25%;
+  width: 100%;
   overflow-y: auto;
-  position: fixed;
 
 }
 
+.test{
+  margin-left: 0;
+  height: 100%;
+  width: 25%;
+  position: fixed;
+
+}
 .custom-heading{
   margin: 0;
   padding: 0;
   height: 40px;
 }
 
+.shadow {
+  -moz-box-shadow:    1px 1px 2px 2px #ccc;
+  -webkit-box-shadow: 1px 1px 2px 2px #ccc;
+  box-shadow:         1px 1px 2px 2px #ccc;
+}
+
+.custom-row{
+  margin: 0;
+  padding-left: 0;
+
+}
+
+.rounded{
+  border-radius: 10px;
+}
+
+.rounded-top{
+  border-radius: 10px 10px 0px 0px;
+}
+
+.rounded-bottom{
+  border-radius: 0px 0px 10px 10px;
+}
+
+.login{
+  width: 50%;
+  margin: 0 auto;
+}

@@ -22,7 +22,7 @@ Auth.authenticate = function (username, password, callback) {
 
             jwt.sign(claims, secretKey, {}, function (token) {
 
-                callback(token);
+                callback({token:token, id: user._id});
             });
 
         } else {
@@ -41,5 +41,10 @@ Auth.verify = function (token, callback) {
         callback(payload);
 
     });
+};
+
+Auth.register = function (data) {
+
+
 };
 
