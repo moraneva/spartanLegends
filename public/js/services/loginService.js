@@ -16,14 +16,20 @@ app.factory('loginService', function ($http, $q) {
         $http.post('/auth/login', userData).then(
             function success(response) {
                 if (typeof(Storage) !== "undefined") {
-                    sessionStorage.authToken = response.data;
+                    if (response.data) {
+                        sessionStorage.authToken = response.data;
+                        deferred.resolve(true);
+                    }
+                    else {
+                        deferred.resolve(false);
+                    }
                 }
                 else {
-
+                    deferred.resolve(false);
                 }
             },
             function error() {
-
+                deferred.resolve(false);
             });
 
         return deferred.promise;

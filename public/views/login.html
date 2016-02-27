@@ -1,5 +1,4 @@
-
-<div class="panel panel-default" style="width: 50%; margin: 0 auto;">
+<div ng-controller="loginController" class="panel panel-default" style="width: 50%; margin: 0 auto;">
     <div class="panel-heading">
         <h3 class="panel-title">Login</h3>
     </div>
@@ -8,17 +7,15 @@
         <form>
             <div class="form-group">
                 <h4><label for="username">Username</label></h4>
-                <input type="text" id="username" placeholder="username">
+                <input type="text" ng-model="username" id="username" placeholder="username">
             </div>
             <div class="form-group">
                 <h4><label for="password">Password</label></h4>
-                <input type="password" id="password" placeholder="password">
+                <input type="password" ng-model="password" id="password" placeholder="password">
             </div>
 
-            <button type="submit" class="btn btn-success">Login</button>
+            <button type="submit" ng-click="login()" class="btn btn-success">Login</button>
         </form>
-    </div>
-
     </div>
 </div>
 

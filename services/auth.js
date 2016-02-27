@@ -16,14 +16,14 @@ Auth.authenticate = function (username, password, callback) {
 
         if (bcrypt.compareSync(password, user.password)) {
 
-                var claims = {
-                    sub: user._id
-                };
+            var claims = {
+                sub: user._id
+            };
 
-                jwt.sign(claims,secretKey,{} ,function (token) {
+            jwt.sign(claims, secretKey, {}, function (token) {
 
-                    callback(token);
-                });
+                callback(token);
+            });
 
         } else {
 
@@ -33,8 +33,6 @@ Auth.authenticate = function (username, password, callback) {
 };
 
 Auth.verify = function (token, callback) {
-
-
 
 };
 

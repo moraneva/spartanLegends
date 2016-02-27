@@ -71,27 +71,32 @@ var data = [
             {
                 'name': 'Zach',
                 'username': 'zachuser',
-                'password': 'zachpass',
+                'password': bcrypt.hashSync('zachpass'),
             },
             {
                 'name': 'Ryan',
                 'username': 'ryanuser',
-                'password': 'ryanpass',
+                'password': bcrypt.hashSync('ryanpass'),
             },
             {
                 'name': 'Evan',
                 'username': 'evanuser',
-                'password': 'evanpass',
+                'password': bcrypt.hashSync('evanpass'),
             },
             {
                 'name': 'Bob',
                 'username': 'bobuser',
-                'password': 'bobpass',
+                'password': bcrypt.hashSync('bobpass'),
             },
             {
                 'name': 'Loser',
                 'username': 'loseruser',
-                'password': 'loserpass',
+                'password': bcrypt.hashSync('loserpass'),
+            },
+            {
+                'name': 'test',
+                'username': 'test',
+                'password': bcrypt.hashSync('test')
             }
         ]
     },
