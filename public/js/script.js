@@ -15,9 +15,7 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.controller('myCtrl', ["$scope", "loginService", function ($scope, loginService) {
-
-    loginService.authenticate("brianuser", "brianpass");
+app.controller('myCtrl', function ($scope) {
 
     $scope.getPercent = function () {
 
@@ -40,5 +38,5 @@ app.controller('myCtrl', ["$scope", "loginService", function ($scope, loginServi
         $scope.dislikes++;
         $scope.percent = $scope.getPercent();
     };
-}]);
+});
 
