@@ -7,9 +7,11 @@ var User = require('../models/user');
 
 UserRepository = module.exports;
 
-UserRepository.getUser = function (userName, callback) {
+UserRepository.getUser = function (criteria, callback) {
 
-    User.findOne({username: userName}, '', function (err, user) {
+
+    User.findOne(criteria, '', function (err, user) {
+
 
         if (err) return handleError(err);
 

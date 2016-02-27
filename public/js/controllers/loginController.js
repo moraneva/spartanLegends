@@ -19,4 +19,11 @@ app.controller('loginController', ["$scope", "$location", "loginService",
                 }
             });
         };
+
+        $scope.postTest = function () {
+
+            console.log("here");
+
+            loginService.test();
+        }
     }]);
