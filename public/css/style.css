@@ -94,7 +94,7 @@ body{
 }
 
 .sidebar{
-  margin-left: 0;
+
   height: 100%;
   width: 100%;
   overflow-y: auto;
@@ -102,9 +102,9 @@ body{
 }
 
 .test{
-  margin-left: 0;
-  height: 100%;
-  width: 25%;
+
+  width: 23%;
+  height: 70%;
   position: fixed;
 
 }
@@ -160,4 +160,9 @@ body{
   padding: 15px;
   margin-bottom: 10px;
 
+}
+
+.searchBar{
+  width: 65%;
+  float: right;
 }
