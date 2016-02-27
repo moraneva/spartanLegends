@@ -13,6 +13,22 @@ app.config(function ($routeProvider) {
     }).otherwise({
         redirectTo: '/'
     });
+
+
+app.config(function($routeProvider) {
+    $routeProvider.
+        when('/home', {
+            templateUrl: '/views/home.html',
+            controller: 'myCtrl'
+        }).
+
+        when('/login', {
+            templateUrl: '/views/login.html'
+        }).
+
+        otherwise({
+            redirectTo: '/home'
+        });
 });
 
 app.controller('myCtrl', function ($scope) {
