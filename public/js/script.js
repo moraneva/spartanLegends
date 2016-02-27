@@ -4,17 +4,6 @@
 
 var app = angular.module('myApp', ['ngRoute']);
 
-app.config(function ($routeProvider) {
-    $routeProvider.when('/home', {
-        templateUrl: '/views/home.html',
-        controller: 'myCtrl'
-    }).when('/login', {
-        templateUrl: '/views/login.html'
-    }).otherwise({
-        redirectTo: '/'
-    });
-
-
 app.config(function($routeProvider) {
     $routeProvider.
         when('/home', {
@@ -29,6 +18,7 @@ app.config(function($routeProvider) {
         otherwise({
             redirectTo: '/home'
         });
+
 });
 
 app.controller('myCtrl', function ($scope) {
