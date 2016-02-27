@@ -9,7 +9,7 @@ ProductRepository = module.exports;
 
 ProductRepository.getProduct = function (productId, callback) {
 
-    Product.findOne({_id: ObjectId(productId)}).populate('posts.comments').exec(function (err, document) {
+    Product.findOne({_id: ObjectId(productId)}).populate('posts posts.comments').exec(function (err, document) {
 
         if (!err) {
 
