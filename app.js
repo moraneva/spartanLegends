@@ -12,6 +12,7 @@ var user = require('./repository/user');
 var posts = require('./routes/post');
 var comments = require('./routes/comment');
 var products = require('./routes/product');
+var company = require('./routes/company');
 
 var app = express();
 
@@ -60,9 +61,10 @@ app.post('*', function (req, res, next) {
 //ROUTES
 app.use('/', routes);
 app.use('/auth', auth);
-app.use('/post', posts);
-app.use('/comment', comments);
-app.use('/product', products);
+app.use('/company', company);
+//app.use('/post', posts);
+//app.use('/comment', comments);
+//app.use('/product', products);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
