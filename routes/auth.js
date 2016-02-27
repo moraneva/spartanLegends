@@ -6,15 +6,13 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 var auth = require('../services/auth');
-var uuid = require('node-uuid');
 
-var secretKey = uuid.v4();
 
 router.get('/', function (req, res) {
 
     var pword = bcrypt.hashSync('bacon');
 
-    var user = new User({name: 'Zach Rosenthal', username: 'user1', password: pword});
+    var user = new User({name: 'Zach Rosenthal', username: 'user1', password: "bacon"});
 
     user.save();
     console.log("auth: " + JSON.stringify(auth));
@@ -26,24 +24,9 @@ router.get('/', function (req, res) {
 /* GET home page. */
 router.get('/login', function (req, res) {
 
-    auth.authenticate("user1", "bacon", function (userId) {
+    auth.authenticate("user1", "bacon", function (retVal) {
 
-        if (userId) {
-
-            //console.log(userId);
-
-            var claims = {
-                sub: userId
-            };
-
-            jwt.sign(claims,secretKey,{} ,function (token) {
-
-                res.send(token);
-            });
-
-        }
-
-
+        res.send(retVal);
     });
 
 });
