@@ -26,12 +26,9 @@ router.get('/logout', function (req, res) {
 router.post('/register', function (req, res) {
 
     Auth.register(req.body, function (err, user) {
-
         if (err) return console.log(err);
-        Auth.authenticate(user.username, user.password, function (retVal) {
-
+        Auth.authenticateNewLogin(user.username, user.password, function (retVal) {
             res.send(retVal);
-
         });
     });
 });

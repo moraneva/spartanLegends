@@ -1,11 +1,11 @@
 app.controller('registrationController', ["$scope", "$routeParams", "registrationService", "loginService",
     function ($scope, $routeParams, registrationService, loginService) {
 
-        $scope.register = function(form){
+        $scope.register = function (form) {
 
             console.log(form);
 
-            if(form.$valid){
+            if (form.$valid) {
 
                 var user = {
                     name: form.name.$modelValue,
@@ -15,11 +15,7 @@ app.controller('registrationController', ["$scope", "$routeParams", "registratio
 
                 console.log(user);
 
-                registrationService.newUser(user).then(function (user) {
-                    loginService.authenticate(user.username, user.password);
-
-                });
-
+                registrationService.newUser(user);
 
             }
         }

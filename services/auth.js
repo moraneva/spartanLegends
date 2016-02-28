@@ -13,7 +13,6 @@ Auth = module.exports;
 Auth.authenticate = function (username, password, callback) {
 
     User.getUser({username: username}, function (user) {
-
         if (user) {
 
             if (bcrypt.compareSync(password, user.password)) {
@@ -27,7 +26,36 @@ Auth.authenticate = function (username, password, callback) {
                     callback({token: token, id: user._id});
                 });
 
-            } else {callback(false);}
+            } else {
+                callback(false);
+            }
+        } else {
+
+            callback(false);
+        }
+    });
+};
+
+Auth.authenticateNewLogin = function (usename, password, callback) {
+
+    User.getUser({username: usename}, function (user) {
+        if (user) {
+
+            if (password == user.password) {
+
+                var claims = {
+                    sub: user._id
+                };
+
+                jwt.sign(claims, secretKey, {}, function (token) {
+
+                    callback({token: token, id: user._id});
+                });
+
+            }
+            else {
+                callback(false);
+            }
         } else {
 
             callback(false);
@@ -47,9 +75,9 @@ Auth.verify = function (token, callback) {
 };
 
 Auth.register = function (user, callback) {
-
-    User.createUser(user, function(err,user){
-        callback(err,user);
+    user.password = bcrypt.hashSync(user.password);
+    User.createUser(user, function (err, user) {
+        callback(err, user);
     });
 };
 

@@ -22,6 +22,8 @@ UserRepository.getUser = function (criteria, callback) {
 UserRepository.createUser = function (user, callback) {
 
     var user = new User(user);
-
-    user.save(callback(err, user));
+    user.save(function (err, user) {
+        console.log(user);
+        callback(err, user)
+    });
 };
