@@ -171,7 +171,8 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
                 };
 
                 postService.createPost(post).then(function (post) {
-                    $scope.selectedProduct.posts.push(post);
+                    $scope.selectedProduct.posts.unshift(post);
+                    $scope.commentFlag[post._id] = 0;
                 });
 
             }
