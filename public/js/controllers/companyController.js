@@ -69,6 +69,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
         };
 
+        /*
         $scope.liked = function (post) {
 
             console.log($scope.selectedProduct);
@@ -107,6 +108,15 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
             else {
                 console.log("dislike denied");
             }
+        };*/
+
+        $scope.liked = function(post){
+            post.up_votes.push($scope.loggedIn);
+        };
+
+        $scope.disliked = function(post){
+                post.down_votes.push($scope.loggedIn);
+
         };
 
         $scope.toggleComments = function (post) {
