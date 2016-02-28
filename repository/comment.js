@@ -9,21 +9,13 @@ CommentRepository = module.exports;
 
 CommentRepository.createComment = function (data, callback) {
 
-    console.log("here");
-
-    console.log(data);
     var comment = new Comment(data);
 
-    console.log(comment);
-
-    callback(-1, null);
-
-    /*Comment.create(data,function (err, comment) {
-
+    comment.save(function (err, comment) {
+        if (err) return console.error(err);
         Post.getPost(data.post, function (err, post) {
 
             if (err) {
-
                 callback(err, -1);
             } else {
 
@@ -36,5 +28,5 @@ CommentRepository.createComment = function (data, callback) {
                 });
             }
         });
-    });*/
+    });
 };

@@ -5,12 +5,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
-    _id: Number,
     text: String,
     user: {
-        type: Number, ref: 'User'
+        type: Schema.Types.ObjectId, ref: 'User'
     },
-    post: {type: Number, ref: 'Post'}
+    post: {type: Schema.Types.ObjectId, ref: 'Post'}
 });
 
 var Comment = mongoose.model('Comment', commentSchema);

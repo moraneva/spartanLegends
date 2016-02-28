@@ -10,7 +10,7 @@ app.factory('commentService', function ($http, $q) {
 
         $http.post('/comment/', comment).then(function (comment) {
 
-            deferred.resolve(comment);
+            deferred.resolve(comment.data);
 
         });
 

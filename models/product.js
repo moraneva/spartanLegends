@@ -5,14 +5,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var productSchema = new Schema({
-    _id: Number,
     company: {
-        type: Number, ref: 'Company'
+        type: Schema.Types.ObjectId, ref: 'Company'
     },
     img: String,
     description: String,
     name: String,
-    posts: [{type: Number, ref: 'Post'}]
+    posts: [{type: Schema.Types.ObjectId, ref: 'Post'}]
 });
 
 var Product = mongoose.model('Product', productSchema);

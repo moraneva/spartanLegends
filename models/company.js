@@ -5,13 +5,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var companySchema = new Schema({
-    _id: Number,
     name: String,
     thumbnail_img_path: String,
     icon: String,
     large_img_path: String,
     description: String,
-    products: [{type: Number, ref: 'Products'}]
+    products: [{type: Schema.Types.ObjectId, ref: 'Products'}]
 
 });
 

@@ -1,11 +1,10 @@
 /**
-  * Created by evan on 2/27/16.
-  */
+ * Created by evan on 2/27/16.
+ */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-    _id: Number,
     name: String,
     username: String,
     password: String

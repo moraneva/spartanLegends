@@ -12,12 +12,13 @@ PostRepository.createPost = function (callback) {
     post.save(callback(err, post))
 };
 
-PostRepository.getPost = function (postId,comment, callback) {
+PostRepository.getPost = function (postId, callback) {
 
-    Post.findOne({_id: postId}).populate('comments')
+    Post.findOne({_id: postId})
         .exec(function (err, post) {
-            callback(err, post,comment)
-        });
 
+            callback(err, post);
+
+        });
 
 };

@@ -3,6 +3,7 @@
  */
 var seeder = require('mongoose-seed');
 var bcrypt = require('bcrypt-nodejs');
+var ObjectID = require('mongodb').ObjectID;
 var Faker = require('Faker');
 
 console.log(Faker.Name.firstName());
@@ -37,32 +38,32 @@ var users = [];
 var companyDocuments = [
 
     {
-        _id: 1,
+        _id: new ObjectID(),
         name: 'Facebook',
         icon: "fa-facebook-official",
         products: []
     },
     {
-        _id: 2,
+        _id: new ObjectID(),
         name: 'Google',
         icon: "fa-google",
         products: []
     },
     {
-        _id: 3,
+        _id: new ObjectID(),
         name: 'Twitter',
         icon: "fa-twitter",
         products: []
     },
     {
 
-        _id: 4,
+        _id: new ObjectID(),
         name: 'Slack',
         icon: "fa-slack",
         products: []
     },
     {
-        _id: 5,
+        _id: new ObjectID(),
         name: 'Amazon',
         icon: "fa-amazon",
         products: []
@@ -75,17 +76,17 @@ function createUser(id) {
 }
 
 var i = 0;
-for (; i < 20;) {
+for (; i < 20; i++) {
 
-    users.push(createUser(++i));
+    users.push(createUser(new ObjectID()));
 
 }
 
 console.log(users);
 
-function createProduct(cId, id) {
+function createProduct(index, cId, id) {
 
-    companyDocuments[cId - 1].products.push(id);
+    companyDocuments[index].products.push(id);
 
     return {
         _id: id,
@@ -98,19 +99,19 @@ function createProduct(cId, id) {
 
 }
 
-for (i = 0; i < 50;) {
+for (i = 0; i < 50; i++) {
 
-    products.push(createProduct(companyDocuments[i % 5]._id, ++i));
+    products.push(createProduct(i % 5, companyDocuments[i % 5]._id, new ObjectID()));
 }
 
 console.log(products);
 
-function createPost(pId, uId, id) {
+function createPost(pIndex, pId, uId, id) {
 
     var uV = [];
     var dV = [];
 
-    products[pId - 1].posts.push(id);
+    products[pIndex].posts.push(id);
 
     for (var x = 0; x < Math.floor(Math.random() * 19); x++) {
 
@@ -136,16 +137,18 @@ function createPost(pId, uId, id) {
     };
 }
 
-for (i = 0; i < 300;) {
+for (i = 0; i < 300; i++) {
 
-    posts.push(createPost(products[Math.floor(Math.random() * 50)]._id, users[Math.floor(Math.random() * 20)]._id, ++i));
+    var productIndex = Math.floor(Math.random() * 50);
+    var userIndex = Math.floor(Math.random() * 20);
+    posts.push(createPost(productIndex, products[productIndex]._id, users[userIndex]._id, new ObjectID()));
 }
 
 console.log(posts);
 
-function createComment(pId, uId, id) {
+function createComment(pIndex, pId, uId, id) {
 
-    posts[pId - 1].comments.push(id);
+    posts[pIndex].comments.push(id);
 
     var text = (Math.floor(Math.random() * 100 + 1) > 50) ? Faker.Lorem.sentences(Math.floor(Math.random() * 3 + 1)) : Faker.Lorem.paragraphs(Math.floor(Math.random() * 2 + 1));
 
@@ -158,9 +161,11 @@ function createComment(pId, uId, id) {
 
 }
 
-for (i = 0; i < 1500;) {
+for (i = 0; i < 1500; i++) {
 
-    comments.push(createComment(posts[Math.floor(Math.random() * 300)]._id, users[Math.floor(Math.random() * 20)]._id, ++i));
+    var postIndex = Math.floor(Math.random() * 300);
+    var userIndex = Math.floor(Math.random() * 20);
+    comments.push(createComment(postIndex, posts[postIndex]._id, users[userIndex]._id, new ObjectID()));
 }
 
 console.log(comments);

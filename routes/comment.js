@@ -10,12 +10,10 @@ router.post('/', function (req, res) {
     console.log("Params:  " + req.body.text);
 
     var data = {
-        _id: 12541,
         text: req.body.text,
         post: req.body.postId,
-        user: 1
+        user: req.body.userId
     };
-
 
     comment.createComment(data, function (err, comment) {
 

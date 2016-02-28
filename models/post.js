@@ -5,14 +5,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
-    _id: Number,
     user: {
-        type: Number, ref: 'User'
+        type: Schema.Types.ObjectId, ref: 'User'
     },
-    up_votes: [{type: Number, ref: 'User'}],
-    down_votes: [{type: Number, ref: 'User'}],
+    up_votes: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    down_votes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     post: String,
-    comments: [{type: Number, ref: 'Comment'}],
+    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
     title: String
 });
 
