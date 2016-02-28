@@ -23,6 +23,74 @@ PostRepository.getPost = function (postId, callback) {
 
 };
 
-PostRepository.upVote = function () {};
 
-PostRepository.downVote = function () {};
+PostRepository.upVote = function (uId, pId, callback) {
+
+    PostRepository.getPost(pId, function (err, post) {
+
+        if (err) {
+            callback(err, -1);
+        } else {
+
+            var a = post.up_votes.some(function (p) {
+                return p.equals(uId);
+            });
+
+            var b = post.up_votes.some(function (p) {
+                return p.equals(uId);
+            });
+
+            if (a || b) {
+
+                callback(-1);
+            } else {
+
+
+                post.up_votes.push(uId);
+
+                post.save(function (err) {
+
+                    callback(err);
+
+                });
+            }
+        }
+
+    })
+
+};
+
+PostRepository.downVote = function (uId, pId, callback) {
+
+    PostRepository.getPost(pId, function (err, post) {
+
+        if (err) {
+            callback(err, -1);
+        } else {
+
+            var a = post.up_votes.some(function (p) {
+                return p.equals(uId);
+            });
+
+            var b = post.up_votes.some(function (p) {
+                return p.equals(uId);
+            });
+
+            if (a || b) {
+
+                callback(-1);
+            } else {
+
+                post.down_votes.push(uId);
+
+                post.save(function (err) {
+
+                    callback(err);
+
+                });
+            }
+        }
+
+    })
+
+};

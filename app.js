@@ -50,10 +50,16 @@ app.post('*', function (req, res, next) {
 
         authService.verify(req.get('AuthToken'), function (payload) {
 
-            user.getUser({_id: payload.sub}, function (userObj) {
-                req.User = userObj;
-                next();
-            })
+            if (payload) {
+
+                user.getUser({_id: payload.sub}, function (userObj) {
+                    req.User = userObj;
+                    next();
+                })
+            } else {
+
+                res.send("bad token");
+            }
         });
     }
 });
@@ -62,7 +68,7 @@ app.post('*', function (req, res, next) {
 app.use('/', routes);
 app.use('/auth', auth);
 app.use('/company', company);
-//app.use('/post', posts);
+app.use('/post', posts);
 app.use('/comment', comments);
 app.use('/product', products);
 

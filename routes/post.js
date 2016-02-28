@@ -23,18 +23,25 @@ router.post('/post', function (req, res) {
 
 router.post('/vote/', function (req, res) {
 
-    callback = function () {
+    callback = function (err) {
 
+        if (!err) {
+
+            res.send(req.body.uId);
+        } else {
+
+            res.status(500).send({error: 'opps we got some mongoose issues'});
+        }
     };
 
     //if 1 then upvote
     if (req.body.direction) {
 
-        Post.upVote(req.body.uId, req.body.pId);
+        Post.upVote(req.body.uId, req.body.pId, callback);
     } else {
 
         //downvote
-        Post.downVote(req.body.uId, req.body.pId);
+        Post.downVote(req.body.uId, req.body.pId, callback);
     }
 
 });

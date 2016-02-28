@@ -2,6 +2,9 @@
  * Created by zacharyrosenthal on 2/27/16.
  */
 app.factory('postService', function ($http, $q) {
+
+    service = {};
+
     service.vote = function (direction, pId) {
 
         var deferred = $q.defer();
