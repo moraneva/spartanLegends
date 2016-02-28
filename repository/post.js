@@ -42,6 +42,8 @@ PostRepository.getPost = function (postId, callback) {
 
 PostRepository.upVote = function (uId, pId, callback) {
 
+    console.log("HELLO");
+
     PostRepository.getPost(pId, function (err, post) {
 
         if (err) {
@@ -65,6 +67,9 @@ PostRepository.upVote = function (uId, pId, callback) {
                 post.up_votes.push(uId);
 
                 post.save(function (err) {
+
+                    console.log("DKJDFL");
+                    console.log(err);
 
                     callback(err);
 
