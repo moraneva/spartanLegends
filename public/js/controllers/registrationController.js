@@ -1,12 +1,27 @@
-app.controller('registrationController', ["$scope", "$routeParams", "productService",
-    function ($scope, $routeParams, productService) {
+app.controller('registrationController', ["$scope", "$routeParams", "registrationService", "loginService",
+    function ($scope, $routeParams, registrationService, loginService) {
 
         $scope.register = function(form){
 
+            console.log(form);
+
             if(form.$valid){
 
-                console.log("valid form");
+                var user = {
+                    name: form.name.$modelValue,
+                    username: form.username.$modelValue,
+                    password: form.password.$modelValue
+                };
+
+                console.log(user);
+
+                registrationService.newUser(user).then(function (user) {
+                    loginService.authenticate(user.username, user.password);
+
+                });
+
 
             }
         }
     }]);
+
