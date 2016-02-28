@@ -23,7 +23,7 @@ Auth.authenticate = function (username, password, callback) {
 
                 jwt.sign(claims, secretKey, {}, function (token) {
 
-                    callback({token: token, id: user._id});
+                    callback({token: token, id: user._id, username: user.username});
                 });
 
             } else {
@@ -49,7 +49,7 @@ Auth.authenticateNewLogin = function (usename, password, callback) {
 
                 jwt.sign(claims, secretKey, {}, function (token) {
 
-                    callback({token: token, id: user._id});
+                    callback({token: token, id: user._id, username: user.username});
                 });
 
             }

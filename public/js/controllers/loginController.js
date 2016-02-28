@@ -4,7 +4,6 @@
 app.controller('loginController', ["$scope", "$location", "loginService",
     function ($scope, $location, loginService) {
 
-
         $scope.init = function () {
 
             if (sessionStorage.userId == undefined || sessionStorage.userId == 0) {
@@ -17,14 +16,15 @@ app.controller('loginController', ["$scope", "$location", "loginService",
         $scope.init();
 
         $scope.login = function (form) {
-            if (!form.$valid){
+            if (!form.$valid) {
                 return;
             }
-            loginService.authenticate($scope.username, $scope.password).then(function success(successful) {
+            loginService.authenticate($scope.username, $scope.password).then(function success(response) {
 
-                $scope.loggedIn = successful;
+                $scope.loggedIn = response.id;
+                $scope.username = response.username;
 
-                if (!successful) {
+                if (!response.id) {
                     alert('Login Failed');
                     return
                 }
@@ -44,7 +44,6 @@ app.controller('loginController', ["$scope", "$location", "loginService",
         };
 
         $scope.postTest = function () {
-
 
             loginService.test();
         }

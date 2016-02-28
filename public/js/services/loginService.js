@@ -19,8 +19,7 @@ app.factory('loginService', function ($http, $q) {
                     $http.defaults.headers.post.AuthToken = response.data.token;
                     if (typeof(Storage) !== "undefined") {
                         sessionStorage.userId = response.data.id;
-                        console.log(sessionStorage.userId);
-                        deferred.resolve(sessionStorage.userId);
+                        deferred.resolve(response.data);
                     } else {
                         deferred.resolve(false);
                     }
@@ -35,7 +34,6 @@ app.factory('loginService', function ($http, $q) {
     };
 
     service.logout = function () {
-
 
         $http.defaults.headers.post.AuthToken = "";
         sessionStorage.userId = 0;
