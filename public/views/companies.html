@@ -1,4 +1,5 @@
 <div class="main-wrapper">
+    <h2 ng-show="loggedIn != 0">Welcome {{user}}</h2>
     <div ng-repeat="company in companies" class="company-list">
         <div class="panel panel-default rounded-panel">
             <a href="#/company/{{company.name}}">

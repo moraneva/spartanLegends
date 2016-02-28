@@ -17,8 +17,7 @@
     </div>
 
     <div class="col-sm-9">
-    {{searchKey}}
-        <div class="panel panel-default rounded" style="text-align: center;" ng-hide="searchKey != null || searchKey === '' ">
+        <div class="panel panel-default rounded" style="text-align: center;">
             <div class="amatic logo panel-heading">
                 <div style="float:left;" class="fa fa-3x fa-align-center" ng-class="company.icon == 'default' ? 'fa-bars' : company.icon"></div>
                 {{selectedProduct.name}}
@@ -30,7 +29,7 @@
             </div>
 
         </div>
-        <div ng-repeat="post in selectedProduct.posts | filter:{title:searchKey}" class="panel panel-default rounded">
+        <div ng-repeat="post in selectedProduct.posts" class="panel panel-default rounded">
             <div class="panel-heading custom-heading rounded-top">
                 <div class="progress rounded-top" ng-class="{noColor: getPercent(post) == 'NaN%'}">
                     <div class="progress-bar progress-bar-success" role="progressbar"
@@ -120,7 +119,7 @@
                     <div class="form-group">
                         <h4><label for="description">Description</label></h4>
                         <textarea type="text" ng-model="newPostDescription" id="description" placeholder="Description"
-                                  style="width: 75%; "/>
+                                  style="width: 75%; "></textarea>
                     </div>
                     <div style="padding: 25px">
                         <button type="submit" style="width: 75%;" data-dismiss="modal" ng-click="newPostSubmit()"
