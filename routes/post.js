@@ -30,11 +30,11 @@ router.post('/vote/', function (req, res) {
     //if 1 then upvote
     if (req.body.direction) {
 
-        comment.upVote(req.body.uId, req.body.pId);
+        Post.upVote(req.body.uId, req.body.pId);
     } else {
 
         //downvote
-        comment.downVote(req.body.uId, req.body.pId);
+        Post.downVote(req.body.uId, req.body.pId);
     }
 
 });

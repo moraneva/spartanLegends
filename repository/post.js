@@ -22,3 +22,7 @@ PostRepository.getPost = function (postId, callback) {
         });
 
 };
+
+PostRepository.upVote = function () {};
+
+PostRepository.downVote = function () {};
