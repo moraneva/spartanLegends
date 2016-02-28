@@ -2,7 +2,7 @@
  * Created by Owner on 2/27/2016.
  */
 app.controller('companyController', ["$scope", "$routeParams", "companyService",
-    "productService", "commentService", "postService"
+    "productService", "commentService", "postService",
     function ($scope, $routeParams, companyService, productService, commentService,
               postService) {
 
