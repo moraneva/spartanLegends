@@ -15,23 +15,31 @@ app.factory('loginService', function ($http, $q) {
 
         $http.post('/auth/login', userData).then(
             function success(response) {
-                $http.defaults.headers.post.AuthToken = response.data.token;
-                if (typeof(Storage) !== "undefined") {
-                    if (response.data) {
+                if (response.data) {
+                    $http.defaults.headers.post.AuthToken = response.data.token;
+                    if (typeof(Storage) !== "undefined") {
                         sessionStorage.userId = response.data.id;
                         console.log(sessionStorage.userId);
-                    }
-                    else {
-                        console.log(sessionStorage.userId);
+                        deferred.resolve(sessionStorage.userId);
+                    } else {
                         deferred.resolve(false);
                     }
+                } else {
+
+                    sessionStorage.userId = 0;
+                    deferred.resolve(0);
                 }
-            },
-            function error() {
-                deferred.resolve(false);
             });
 
         return deferred.promise;
+    };
+
+    service.logout = function () {
+
+
+        $http.defaults.headers.post.AuthToken = "";
+        sessionStorage.userId = 0;
+
     };
 
     service.test = function () {

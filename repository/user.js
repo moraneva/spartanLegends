@@ -11,9 +11,13 @@ UserRepository.getUser = function (criteria, callback) {
     User.findOne(criteria, '', function (err, user) {
 
 
-        if (err) return handleError(err);
+        if (err) {
 
-        return callback(user);
+            callback(null)
+        } else {
+
+            callback(user);
+        }
     });
 };
 
