@@ -2,8 +2,9 @@
  * Created by Owner on 2/27/2016.
  */
 app.controller('companyController', ["$scope", "$routeParams", "companyService",
-    "productService", "commentService",
-    function ($scope, $routeParams, companyService, productService, commentService) {
+    "productService", "commentService", "postService"
+    function ($scope, $routeParams, companyService, productService, commentService,
+              postService) {
 
         function _init() {
             var companyName = $routeParams.companyName;
@@ -38,9 +39,9 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
         $scope.liked = function (post) {
 
-           commentService.vote(1, post._id).then(function (response) {
-               post.up_votes.push(response.data.id);
-           });
+            commentService.vote(1, post._id).then(function (response) {
+                post.up_votes.push(response.data.id);
+            });
         };
 
         $scope.disliked = function (post) {
@@ -91,8 +92,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
                 });
         };
 
-        $scope.newPostSubmit = function(){
-
+        $scope.newPostSubmit = function () {
 
         };
 

@@ -1,7 +1,7 @@
 /**
  * Created by zacharyrosenthal on 2/27/16.
  */
-    app.factory('commentService', function ($http, $q) {
+    app.factory('postService', function ($http, $q) {
         service.vote = function (direction, pId) {
 
             var deferred = $q.defer();
