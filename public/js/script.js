@@ -16,6 +16,12 @@ app.config(function ($routeProvider) {
             controller: 'companyController'
         }).
 
+        when('/registration', {
+            templateUrl: 'views/registration.html',
+            controller:'registrationController'
+        }).
+
+
         otherwise({
             redirectTo: '/companies'
 
