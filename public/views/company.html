@@ -1,23 +1,31 @@
-
 <div class="row custom-row">
     <div class="col-sm-3">
-         <div class="panel panel-default rounded test">
+        <div class="panel panel-default rounded test">
 
-          <div class="panel-heading rounded-top" style="width: 101%;" >Products<input class="searchBar" placeholder="search" ng-model="searchKey"></div>
+            <div class="panel-heading rounded-top" style="width: 101%;">Products<input class="searchBar"
+                                                                                       placeholder="search"
+                                                                                       ng-model="searchKey"></div>
 
-                 <ul class="list-group sidebar test">
-                <li ng-repeat="product in products | filter:{name:searchKey}" class="list-group-item product rounded" ng-click="onClickProduct(product)" ng>
+            <ul class="list-group sidebar test">
+                <li ng-repeat="product in products | filter:{name:searchKey}" class="list-group-item product rounded"
+                    ng-click="onClickProduct(product)" ng>
                     {{product.name}}
                 </li>
-                 </ul>
-             </div>
+            </ul>
+        </div>
     </div>
-
 
     <div class="col-sm-9">
 
-        <div ng-repeat="post in selectedProduct.posts | filter:{title:searchKey}" class="panel panel-default rounded"
-             ng-repeat="idea in ideas">
+        <div class="panel panel-default rounded">
+            <h2 style="text-align: center;">{{selectedProduct.name}}</h2>
+            <div class="panel-body">
+                <h4>{{selectedProduct.description}}</h4>
+                <a data-target="#createPost" data-toggle="modal" class="navbar-brand amatic logo">Post Your Idea</a>
+            </div>
+
+        </div>
+        <div ng-repeat="post in selectedProduct.posts | filter:{title:searchKey}" class="panel panel-default rounded">
             <div class="panel-heading custom-heading rounded-top">
                 <div class="progress rounded-top" ng-class="{noColor: getPercent(post) == 'NaN%'}">
                     <div class="progress-bar progress-bar-success" role="progressbar"
@@ -68,7 +76,7 @@
 
             </div>
 
-            <div class="panel-footer rounded-bottom">
+            <div ng-show="commentFlag[post._id]" class="panel-footer rounded-bottom">
                 <div class="input-group rounded-bottom">
                     <input class="form-control" placeholder="Add a comment" type="text" ng-model="newComment[post._id]">
                             <span class="input-group-addon">
@@ -79,6 +87,39 @@
 
         </div>
 
+    </div>
+</div>
+
+<!-- Edit Group Name-->
+<div class="modal fade rounded loginModal" id="createPost" tabindex="-1" role="dialog">
+    <div class="modal-dialog rounded">
+        <div class="modal-content rounded">
+            <div class="modal-header modal-header-custom rounded-top">
+                <span class="login">Post an Idea</span>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form>
+                    <div class="form-group">
+                        <h4><label for="title">Title</label></h4>
+                        <input type="text" ng-model="newPostTitle" id="title" placeholder="Title" style="width: 75%;">
+                    </div>
+                    <div class="form-group">
+                        <h4><label for="description">Description</label></h4>
+                        <textarea type="text" ng-model="newPostDescription" id="description" placeholder="Description"
+                                  style="width: 75%; "/>
+                    </div>
+                    <div style="padding: 25px">
+                        <button type="submit" style="width: 75%;" data-dismiss="modal" ng-click="newPostSubmit()"
+                                class="btn btn-success" style="margin-bottom: 10px;">Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
 </div>
 

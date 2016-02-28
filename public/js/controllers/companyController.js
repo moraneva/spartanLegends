@@ -34,8 +34,6 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
             return (post.up_votes.length / (post.up_votes.length + post.down_votes.length) * 100).toString() + "%";
         };
 
-        $scope.newComment = {};
-        $scope.test = "angular";
         $scope.commentFlag = [];
 
         $scope.liked = function (post) {
@@ -87,6 +85,11 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
                         $scope.commentFlag[id] = 0;
                     });
                 });
+        };
+
+        $scope.newPostSubmit = function(){
+
+
         };
 
         _init();

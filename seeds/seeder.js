@@ -83,7 +83,43 @@ for (; i < 20; i++) {
 }
 
 console.log(users);
+function createFacebookProducts() {
 
+    products.push([
+        {
+            _id: new Object(),
+            company: companyDocuments[0]._id,
+            img: "Facebook Website",
+            description: "Profile is where you can express who you are and what's going on in your life. You can choose what you want to share on your Profile, such as interests, photos and videos, and personal information like current city and hometown.",
+            name: "Profile",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[0]._id,
+            img: "Instagram",
+            description: "News Feed is a regularly updating list of stories from friends, Pages, and other connections, like Groups and events. People can like or comment on what they see. Each person’s News Feed is personalized based on their interests and the sharing activity of their friends.",
+            name: "News Feed",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[0]._id,
+            img: "Messenger",
+            description: "Messenger is a mobile messaging app that lets you reach people instantly on their phones. With Messenger you can send private messages and stickers, chat with groups, and make free calls, even to people in other countries. You can also see who's available on Messenger and who's active on Facebook.",
+            name: "Messenger",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[0]._id,
+            img: "Instagram",
+            description: "Instagram makes it easy for you to capture what’s happening in your world and share those moments instantly with friends and family, whether it’s a video of your baby’s first steps, a memorable sunset or a photo of your friend crossing the finish line. Instagram inspires us to explore and see the world differently—to go on adventures, to take detours, to take in everything around you and to share what you see with the world. Take a photo or video, choose a filter and share.",
+            name: "Instagram",
+            posts: []
+        },
+    ]);
+}
 function createProduct(index, cId, id) {
 
     companyDocuments[index].products.push(id);
@@ -171,7 +207,44 @@ for (i = 0; i < 1500; i++) {
 console.log(comments);
 
 // Data array containing seed data - documents organized by Model
+var array = [
+    {
+        _id: new Object(),
+        company: companyDocuments[0]._id,
+        img: "Facebook Website",
+        description: "Profile is where you can express who you are and what's going on in your life. You can choose what you want to share on your Profile, such as interests, photos and videos, and personal information like current city and hometown.",
+        name: "Profile",
+        posts: []
+    },
+    {
+        _id: new Object(),
+        company: companyDocuments[0]._id,
+        img: "Instagram",
+        description: "News Feed is a regularly updating list of stories from friends, Pages, and other connections, like Groups and events. People can like or comment on what they see. Each person’s News Feed is personalized based on their interests and the sharing activity of their friends.",
+        name: "News Feed",
+        posts: []
+    },
+    {
+        _id: new Object(),
+        company: companyDocuments[0]._id,
+        img: "Messenger",
+        description: "Messenger is a mobile messaging app that lets you reach people instantly on their phones. With Messenger you can send private messages and stickers, chat with groups, and make free calls, even to people in other countries. You can also see who's available on Messenger and who's active on Facebook.",
+        name: "Messenger",
+        posts: []
+    },
+    {
+        _id: new Object(),
+        company: companyDocuments[0]._id,
+        img: "Instagram",
+        description: "Instagram makes it easy for you to capture what’s happening in your world and share those moments instantly with friends and family, whether it’s a video of your baby’s first steps, a memorable sunset or a photo of your friend crossing the finish line. Instagram inspires us to explore and see the world differently—to go on adventures, to take detours, to take in everything around you and to share what you see with the world. Take a photo or video, choose a filter and share.",
+        name: "Instagram",
+        posts: []
+    },
+];
 
+array.forEach(function (product) {
+    products.push(product);
+});
 var data = [
     {
         model: 'Company',
