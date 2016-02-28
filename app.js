@@ -48,20 +48,20 @@ app.post('*', function (req, res, next) {
 
         next();
     } else {
-
-        authService.verify(req.get('AuthToken'), function (payload) {
-
-            if (payload) {
-                console.log("xxx");
-                console.log(payload);
-                user.getUser({_id: payload.sub}, function (userObj) {
-                    req.User = userObj;
-                    next();
-                })
-            } else {
-                res.sendStatus(-1);
-            }
-        });
+        next();
+        //authService.verify(req.get('AuthToken'), function (payload) {
+        //
+        //    if (payload) {
+        //        console.log("xxx");
+        //        console.log(payload);
+        //        user.getUser({_id: payload.sub}, function (userObj) {
+        //            req.User = userObj;
+        //            next();
+        //        })
+        //    } else {
+        //        res.sendStatus(-1);
+        //    }
+        //});
     }
 });
 
