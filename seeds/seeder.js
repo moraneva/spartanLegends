@@ -67,6 +67,12 @@ var companyDocuments = [
         icon: "fa-amazon",
         products: []
     },
+    {
+        _id: new ObjectID(),
+        name: "Idea Source",
+        icon: "default",
+        products: []
+    }
 ];
 
 function createUser(id) {
@@ -242,6 +248,14 @@ var products = [
         name: "Amazon Account",
         posts: []
     },
+    {
+        _id: new ObjectID(),
+        company: companyDocuments[5]._id,
+        img: "ASdfsdf",
+        description: "THIS WEBSITE",
+        name: "Idead Source",
+        posts: []
+    }
 
 ];
 
@@ -291,7 +305,7 @@ function createPost(pIndex, pId, uId, id) {
 
 for (i = 0; i < 300; i++) {
 
-    var productIndex = Math.floor(Math.random() * 20);
+    var productIndex = Math.floor(Math.random() * 21);
     var userIndex = Math.floor(Math.random() * 20);
     posts.push(createPost(productIndex, products[productIndex]._id, users[userIndex]._id, new ObjectID()));
 }
