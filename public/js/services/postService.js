@@ -15,11 +15,16 @@ app.factory('postService', function ($http, $q) {
             uId: sessionStorage.userId
         };
 
-        $http.post('/post/vote/', data).then(function (response) {
+        $http.post('/post/vote/', data).then(function success(response) {
 
             deferred.resolve(response.data);
 
-        });
+        },
+        function error (response) {
+
+            deferred.resolve (response.data);
+        }
+        );
 
         return deferred.promise;
 

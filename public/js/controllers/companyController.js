@@ -41,14 +41,25 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
             postService.vote(1, post._id).then(function (response) {
                 post.up_votes.push(response.id);
-            });
+            },
+            function (response) {
+
+                alert('Cant do that');
+            }
+
+            );
         };
 
         $scope.disliked = function (post) {
 
             postService.vote(0, post._id).then(function (response) {
                 post.down_votes.push(response.id);
-            });
+            },
+            function (response) {
+
+                alert('Cant do that');
+            }
+            );
         };
 
         $scope.toggleComments = function (post) {
