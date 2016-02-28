@@ -83,9 +83,8 @@ for (; i < 20; i++) {
 }
 
 console.log(users);
-function createFacebookProducts() {
 
-    products.push([
+    products = [
         {
             _id: new Object(),
             company: companyDocuments[0]._id,
@@ -118,8 +117,137 @@ function createFacebookProducts() {
             name: "Instagram",
             posts: []
         },
-    ]);
-}
+        {
+            _id: new Object(),
+            company: companyDocuments[1]._id,
+            img: "Google Maps",
+            description: "Google Maps is a service that provides detailed information about geographical regions and sites around the world. In addition to conventional road maps, Google Maps offers aerial and satellite views of many places. In some cities, Google Maps offers street views comprising photographs taken from vehicles.",
+            name: "Google Maps",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[1]._id,
+            img: "Google Chrome",
+            description: "Google Chrome is an Internet browser developed by Google Inc. that combines a minimal design with sophisticated technology to make the Web faster, safer and easier. The Google Chrome browser offers features including access to favorite pages instantly with thumbnails, desktop shortcuts to launch Web applications, and independently run tabs within the browser to prevent browser crashing. ",
+            name: "Google Chrome",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[1]._id,
+            img: "Google Docs",
+            description: "Google Docs is an online word processor that lets you create and format text documents and collaborate with other people in real time.",
+            name: "Google Docs",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[1]._id,
+            img: "Google Hangouts",
+            description: "Google Hangouts is a unified communications service that allows members to initiate and participate in text, voice or video chats, either one-on-one or in a group.",
+            name: "Google Hangouts",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[2]._id,
+            img: "Twitter Website",
+            description: "You can customize your profile by selecting unique profile and header images, adding a name, bio, location, birthday, website and theme color, and by pinning a Tweet that other users will see when they visit your profile.",
+            name: "Profile",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[2]._id,
+            img: "Twitter Feed",
+            description: "Twitter Feed is a regularly updating list of tweets from people they follow. People can retweet what they see. Each person’s News Feed is personalized based on the activity of their followers.",
+            name: "Twitter Feed",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[2]._id,
+            img: "Twitter Messenger",
+            description: "Messenger allows you to send private and direct messages to other people on twitter.",
+            name: "Messenger",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[2]._id,
+            img: "Twitter App",
+            description: "The Twitter app allows you to access all the functions of the website from your mobile device.",
+            name: "Twiiter App",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[3]._id,
+            img: "Slack Channels",
+            description: "Organize your team conversations in open channels. Make a channel for a project, a topic, a team, or anything—everyone has a transparent view of all that’s going on.",
+            name: "Channel",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[3]._id,
+            img: "Slack Private Channels",
+            description: "For sensitive information, create private channels and invite a few team members. No one else can see or join your private channels.",
+            name: "Private Channel",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[3]._id,
+            img: "Slack Direct Message",
+            description: "To reach a colleague directly, send them a Direct Message. It's completely private and secure.",
+            name: "Direct Message",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[3]._id,
+            img: "Slack Account",
+            description: "A Slack account allows you to set up a profile with your name, description, phone number, Skype, and a picture. You can set up notification so you will be notified every time something gets posted to Slack. This will help keep you up to date, but it will get noisier the larger and more active your team becomes.",
+            name: "Account",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[4]._id,
+            img: "Amazon Echo",
+            description: "Amazon Echo is a wireless speaker and voice command device from Amazon.com. The device responds to the name 'Alexa'; this wake word can be changed by the user to 'Amazon' or 'Echo'. The device is capable of voice interaction, music playback, making to-do lists, setting alarms, streaming podcasts, playing audiobooks, and providing weather, traffic and other real time information. ",
+            name: "Amazon Echo",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[4]._id,
+            img: "Amazon Website",
+            description: "Amazon is an American electronic commerce and cloud computing company with headquarters in Seattle, Washington. It is the largest Internet-based retailer in the United States. You can browse products that other sellers have listed or sell something of your own.",
+            name: "Amazon Buy/Sell",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[4]._id,
+            img: "Amazon Prime",
+            description: "Amazon Prime is a paid service that gives Amazon shoppers a few distinct advantages. Members of Amazon Prime are eligible for free one- or two-day shipping on most items, Prime music, Prime Photos, and more.",
+            name: "Amazon Prime",
+            posts: []
+        },
+        {
+            _id: new Object(),
+            company: companyDocuments[4]._id,
+            img: "Amazon Account",
+            description: "Amazon account allows you to manage your profile, previous orders, recommendations, saved items, other settings to make your shopping experience more enjoyable.",
+            name: "Amazon Account",
+            posts: []
+        },
+
+    ]
+    ;
 function createProduct(index, cId, id) {
 
     companyDocuments[index].products.push(id);
@@ -133,11 +261,6 @@ function createProduct(index, cId, id) {
         posts: []
     };
 
-}
-
-for (i = 0; i < 50; i++) {
-
-    products.push(createProduct(i % 5, companyDocuments[i % 5]._id, new ObjectID()));
 }
 
 console.log(products);
