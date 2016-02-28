@@ -4,16 +4,6 @@
 
 var app = angular.module('myApp', ['ngRoute']);
 
-app.directive('myModal', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attr) {
-            scope.dismiss = function() {
-                element.modal('hide');
-            };
-        }
-    }
-});
 
 app.config(function ($routeProvider) {
     $routeProvider.
@@ -31,7 +21,6 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/registration.html',
             controller:'registrationController'
         }).
-
 
         otherwise({
             redirectTo: '/companies'

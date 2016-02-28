@@ -29,7 +29,7 @@ app.controller('loginController', ["$scope", "$location", "loginService",
                     return
                 }
                 else {
-                    $('#loginForm').modal('hide');
+                    $('#login').modal('hide');
                     $location.path('/home');
                 }
 
@@ -45,7 +45,6 @@ app.controller('loginController', ["$scope", "$location", "loginService",
 
         $scope.postTest = function () {
 
-            console.log("here");
 
             loginService.test();
         }

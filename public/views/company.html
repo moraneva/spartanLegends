@@ -17,12 +17,12 @@
     </div>
 
     <div class="col-sm-9">
-
-        <div class="panel panel-default rounded" style="text-align: center;">
+    {{searchKey}}
+        <div class="panel panel-default rounded" style="text-align: center;" ng-hide="searchKey != null || searchKey === '' ">
             <div class="amatic logo panel-heading">
                 <div style="float:left;" class="fa fa-3x fa-align-center" ng-class="company.icon == 'default' ? 'fa-bars' : company.icon"></div>
                 {{selectedProduct.name}}
-                <button data-target="#createPost" data-toggle="modal" class = "btn btn-default btn-xlarge" style="float: right;">Post Your Idea</button>
+                <button ng-disabled = "loggedIn == 0" data-target="#createPost" data-toggle="modal" class = "btn btn-default btn-xlarge" style="float: right;">Post Your Idea</button>
             </div>
             <div class="panel-body" style="padding: 20px;">
                 <h4>{{selectedProduct.description}}</h4>
@@ -51,13 +51,13 @@
                 <span style="float: right;" ng-show="voteFlags[post._id]" ng-class="{'fa-check-circle fa fa-3x': voteFlags[post._id]}">Already Voted</span>
 
 
-                <button type="button" class="btn btn-success" ng-click="liked(post)">
+                <button type="button" class="btn btn-success" ng-disabled="loggedIn == 0" ng-click="liked(post)">
                     <i class="fa fa-thumbs-up fa-2x"></i>
                 </button>
 
 
 
-                <button type="button" class="btn btn-danger" ng-click="disliked(post)">
+                <button type="button" class="btn btn-danger" ng-disabled="loggedIn == 0" ng-click="disliked(post)">
                     <i class="fa fa-thumbs-down fa-2x"></i>
                 </button>
 
@@ -91,7 +91,7 @@
                 <div class="input-group rounded-bottom">
                     <input class="form-control" placeholder="Add a comment" type="text" ng-model="newComment[post._id]">
                             <span class="input-group-addon">
-                                <a ng-click="addComment(post)"><i class="fa fa-edit"></i></a>
+                                <a ng-disabled="loggedIn == 0"ng-click="addComment(post)"><i class="fa fa-edit"></i></a>
                             </span>
                 </div>
             </div>

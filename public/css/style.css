@@ -10,14 +10,6 @@ a:hover{
 }
 
 body{
-  /*background-color: #fff;
-  background-size: 100% 1.2em;
-  -webkit-linear-gradient(#eee .05em, transparent .05em);
-  background-image: -moz-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-  -moz-linear-gradient(#eee .05em, transparent .05em);
-  background-image: linear-gradient(90deg, transparent 79px, #abced4 81px, transparent 81px),
-  linear-gradient(#dcfdff .1em, transparent .1em);
-  linear-gradient(#dcfdff.1em, transparent .1em) 0 0 / 100% 1.2em #fff;*/
   background-color: #bbe3f3 ;
   padding: 70px 0 0 0;
 
@@ -177,4 +169,12 @@ body{
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+}
+
+.registration{
+  width: 40%;
+  margin: 0 auto;
+  background-color: #faf2a7;
+  border-radius: 15px;
+  padding: 40px;
 }
