@@ -13,20 +13,23 @@ CommentRepository.createComment = function (data, callback) {
 
     comment.save(function (err, comment) {
         if (err) return console.error(err);
-        Post.getPost(data.post, function (err, post) {
+        Comment.populate(comment, {path: "user"}, function (err, comment) {
+            Post.getPost(data.post, function (err, post) {
 
-            if (err) {
-                callback(err, -1);
-            } else {
+                if (err) {
+                    callback(err, -1);
+                } else {
 
-                post.comments.push(comment._id);
+                    post.comments.push(comment._id);
 
-                post.save(function (err) {
+                    post.save(function (err) {
 
-                    callback(err, comment);
+                        callback(err, comment);
 
-                });
-            }
+                    });
+                }
+            });
         });
+
     });
 };

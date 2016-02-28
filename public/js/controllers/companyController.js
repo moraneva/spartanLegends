@@ -18,6 +18,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
                             $scope.selectedProduct.posts.forEach(function (post) {
                                 var id = post._id;
                                 $scope.commentFlag[id] = 0;
+                                $scope.alreadyVoted(post.up_votes, post.down_votes, post._id);
                             });
                         });
                 }
@@ -40,25 +41,28 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
         $scope.voteFlags = {};
 
-        $scope.alreadyVoted = function(upvotes, downvotes, id){
+        $scope.alreadyVoted = function (upvotes, downvotes, id) {
 
+            if (!sessionStorage.userId) {
+                $scope.voteFlags[id] = false
+                return false;
+            }
             console.log("checking voted");
-
 
             console.log(upvotes);
             console.log(downvotes);
 
-            if (downvotes.indexOf(sessionStorage.userId) > -1){
+            if (downvotes.indexOf(sessionStorage.userId) > -1) {
                 $scope.voteFlags[id] = true;
                 return true;
             }
-            else if(upvotes.indexOf(sessionStorage.userId) > -1){
+            else if (upvotes.indexOf(sessionStorage.userId) > -1) {
                 $scope.voteFlags[id] = true;
 
                 return true;
             }
 
-            else{
+            else {
                 $scope.voteFlags[id] = false;
                 return false;
             }
@@ -69,8 +73,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
             console.log($scope.selectedProduct);
 
-
-            if(!$scope.alreadyVoted(post.up_votes, post.down_votes, post._id)) {
+            if (!$scope.alreadyVoted(post.up_votes, post.down_votes, post._id)) {
                 postService.vote(1, post._id).then(function (response) {
 
                         post.up_votes.push(response);
@@ -82,7 +85,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
                     }
                 );
             }
-            else{
+            else {
                 console.log("like denied");
             }
         };
@@ -91,7 +94,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
             if (!$scope.alreadyVoted(post.up_votes, post.down_votes, post._id)) {
                 postService.vote(0, post._id).then(function (response) {
 
-                            post.down_votes.push(response);
+                        post.down_votes.push(response);
 
                     },
                     function (response) {
@@ -101,11 +104,10 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
                 );
             }
 
-            else{
+            else {
                 console.log("dislike denied");
             }
         };
-
 
         $scope.toggleComments = function (post) {
 

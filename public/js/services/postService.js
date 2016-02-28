@@ -17,7 +17,7 @@ app.factory('postService', function ($http, $q) {
 
         console.log(data);
 
-        $http.post('/post/vote/', data).then(function success(response) {
+        $http.post('/post/vote', data).then(function success(response) {
 
             console.log(response);
 

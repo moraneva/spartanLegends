@@ -7,9 +7,7 @@ UserRepository = module.exports;
 
 UserRepository.getUser = function (criteria, callback) {
 
-
     User.findOne(criteria, '', function (err, user) {
-
 
         if (err) {
 
@@ -21,9 +19,9 @@ UserRepository.getUser = function (criteria, callback) {
     });
 };
 
-UserRepository.createUser = function (callback) {
+UserRepository.createUser = function (user, callback) {
 
-    var user = new User({});
+    var user = new User(user);
 
     user.save(callback(err, user));
 };

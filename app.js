@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //AUTH Middleware
 app.post('*', function (req, res, next) {
 
-    if (req.path == '/auth/login' || req.path == 'auth/register') {
+    if (req.path == '/auth/login' || req.path == '/auth/register') {
 
         next();
     } else {
@@ -71,7 +71,6 @@ app.use('/company', company);
 app.use('/post', posts);
 app.use('/comment', comments);
 app.use('/product', products);
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

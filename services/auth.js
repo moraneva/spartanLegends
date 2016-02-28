@@ -46,8 +46,10 @@ Auth.verify = function (token, callback) {
     });
 };
 
-Auth.register = function (data) {
+Auth.register = function (user, callback) {
 
-
+    User.createUser(user, function(err,user){
+        callback(err,user);
+    });
 };
 
