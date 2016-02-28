@@ -3,7 +3,7 @@
  */
 app.factory('postService', function ($http, $q) {
 
-    service = {};
+    var service = {};
 
     service.vote = function (direction, pId) {
 
@@ -28,6 +28,19 @@ app.factory('postService', function ($http, $q) {
 
         return deferred.promise;
 
+    };
+
+    service.createPost = function (post) {
+
+        var deferred = $q.defer();
+
+        $http.post('/post/new', post).then(function (response) {
+
+            return deferred.resolve(response.data);
+
+        });
+
+        return deferred.promise;
     };
 
     return service;

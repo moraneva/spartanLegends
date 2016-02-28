@@ -35,6 +35,7 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
             return (post.up_votes.length / (post.up_votes.length + post.down_votes.length) * 100).toString() + "%";
         };
 
+        $scope.newComment = [];
         $scope.commentFlag = [];
 
         $scope.liked = function (post) {
@@ -105,6 +106,22 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
         $scope.newPostSubmit = function () {
 
+            if (sessionStorage.userId) {
+                var post = {
+                    user: sessionStorage.userId,
+                    post: $scope.newPostDescription,
+                    title: $scope.newPostTitle,
+                    product: $scope.selectedProduct._id
+                };
+
+                postService.createPost(post).then(function (post) {
+                    $scope.selectedProduct.posts.push(post);
+                });
+
+            }
+            else {
+                alert('You must be signed in ');
+            }
         };
 
         _init();
