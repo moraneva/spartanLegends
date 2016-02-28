@@ -58,7 +58,7 @@ app.post('*', function (req, res, next) {
                 })
             } else {
 
-                res.send("bad token");
+                res.send(-1);
             }
         });
     }
