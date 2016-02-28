@@ -50,10 +50,16 @@ app.post('*', function (req, res, next) {
 
         authService.verify(req.get('AuthToken'), function (payload) {
 
-            user.getUser({_id: payload.sub}, function (userObj) {
-                req.User = userObj;
-                next();
-            })
+            if (payload) {
+
+                user.getUser({_id: payload.sub}, function (userObj) {
+                    req.User = userObj;
+                    next();
+                })
+            } else {
+
+                res.send(-1);
+            }
         });
     }
 });

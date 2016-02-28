@@ -2,6 +2,7 @@
  * Created by zacharyrosenthal on 2/27/16.
  */
 app.factory('postService', function ($http, $q) {
+
     var service = {};
 
     service.vote = function (direction, pId) {
