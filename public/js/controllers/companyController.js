@@ -38,30 +38,61 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
         $scope.newComment = [];
         $scope.commentFlag = [];
 
-        $scope.liked = function (post) {
+        $scope.voteFlags = {};
 
-            postService.vote(1, post._id).then(function (response) {
-                post.up_votes.push(response.id);
-            },
-            function (response) {
+        $scope.alreadyVoted = function(upvotes, downvotes, id){
 
-                alert('Cant do that');
+            console.log("checking voted");
+
+            if (downvotes.indexOf(sessionStorage.userId) > -1){
+                $scope.voteFlags[id] = true;
+                return true;
+            }
+            else if(upvotes.indexOf(sessionStorage.userId) > -1){
+                $scope.voteFlags[id] = true;
+                return true;
             }
 
-            );
+            else{
+                $scope.voteFlags[id] = false;
+                return false;
+            }
+
+        };
+
+        $scope.liked = function (post) {
+            if(!$scope.alreadyVoted(post.up_votes, post.down_votes, post._id)) {
+                postService.vote(1, post._id).then(function (response) {
+                        post.up_votes.push(response.id);
+                    },
+                    function (response) {
+
+                        alert('Cant do that');
+                    }
+                );
+            }
+            else{
+                console.log("like denied");
+            }
         };
 
         $scope.disliked = function (post) {
+            if (!$scope.alreadyVoted(post.up_votes, post.down_votes, post._id)) {
+                postService.vote(0, post._id).then(function (response) {
+                        post.down_votes.push(response.id);
+                    },
+                    function (response) {
 
-            postService.vote(0, post._id).then(function (response) {
-                post.down_votes.push(response.id);
-            },
-            function (response) {
-
-                alert('Cant do that');
+                        alert('Cant do that');
+                    }
+                );
             }
-            );
+
+            else{
+                console.log("dislike denied");
+            }
         };
+
 
         $scope.toggleComments = function (post) {
 

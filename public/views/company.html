@@ -8,20 +8,26 @@
 
             <ul class="list-group sidebar test">
                 <li ng-repeat="product in products | filter:{name:searchKey}" class="list-group-item product rounded"
-                    ng-click="onClickProduct(product)" ng>
+                    ng-click="onClickProduct(product)" ng-class="{'listActive': product._id == selectedProduct._id}">
                     {{product.name}}
                 </li>
+                <div class="fa fa-5x fa-align-center" ng-class="company.icon == 'default' ? 'fa-bars' : company.icon"></div>
+
+
             </ul>
         </div>
     </div>
 
     <div class="col-sm-9">
 
-        <div class="panel panel-default rounded">
-            <h2 style="text-align: center;">{{selectedProduct.name}}</h2>
-            <div class="panel-body">
+        <div class="panel panel-default rounded" style="text-align: center;">
+            <div class="amatic logo panel-heading">
+                {{selectedProduct.name}}
+                <button data-target="#createPost" data-toggle="modal" class = "btn btn-default btn-xlarge" style="float: right;">Post Your Idea</button>
+            </div>
+            <div class="panel-body" style="padding: 20px;">
                 <h4>{{selectedProduct.description}}</h4>
-                <a data-target="#createPost" data-toggle="modal" class="navbar-brand amatic logo">Post Your Idea</a>
+
             </div>
 
         </div>
@@ -43,21 +49,27 @@
                     {{post.post}}
                 </p>
 
+                <span style="float: right;" ng-show="voteFlags[post._id]" ng-class="{'fa-check-circle fa fa-3x': voteFlags[post._id]}">Already Voted</span>
+
+
                 <button type="button" class="btn btn-success" ng-click="liked(post)">
                     <i class="fa fa-thumbs-up fa-2x"></i>
                 </button>
 
-                Likes:{{post.up_votes.length}}
+
 
                 <button type="button" class="btn btn-danger" ng-click="disliked(post)">
                     <i class="fa fa-thumbs-down fa-2x"></i>
                 </button>
 
-                Dislikes:{{post.down_votes.length}}
 
                 <br/>
                 <br/>
                 <hr/>
+
+                <div style="float: right;">
+                    <span style="padding: 5px;">Up:{{post.up_votes.length}}</span><span>Down:{{post.down_votes.length}}</span>
+                </div>
 
                 <button class="btn btn-default" ng-click="toggleComments(post)" ng-show="commentFlag[post._id] == 0">
                     Show Comments

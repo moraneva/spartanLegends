@@ -83,7 +83,7 @@ body{
 
 .product:hover {
 
-  background-color: #5bc0de;
+  background-color: lightgray;
   cursor: pointer;
   cursor: hand;
 
@@ -165,4 +165,16 @@ body{
 .searchBar{
   width: 65%;
   float: right;
+}
+
+.listActive{
+  background-color: #faf2a7;
+}
+.btn-xlarge {
+  padding: 18px 28px;
+  font-size: 22px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
