@@ -38,7 +38,7 @@ app.factory('companyService', function ($http, $q) {
         );
 
         return deferred.promise;
-    }
+    };
 
     return service;
 });
