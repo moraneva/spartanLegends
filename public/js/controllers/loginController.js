@@ -3,25 +3,44 @@
  */
 app.controller('loginController', ["$scope", "$location", "loginService",
     function ($scope, $location, loginService) {
-        $scope.loggedIn = 0;
 
-        $scope.login = function () {
-            if (!$scope.username) {
-                alert('Can\'t have a blank login');
+
+        $scope.init = function () {
+
+            if (sessionStorage.userId == undefined || sessionStorage.userId == 0) {
+                $scope.loggedIn = 0;
+            } else {
+                $scope.loggedIn = sessionStorage.userId;
+            }
+        };
+
+        $scope.init();
+
+        $scope.login = function (form) {
+            if (!form.$valid){
                 return;
             }
             loginService.authenticate($scope.username, $scope.password).then(function success(successful) {
+
+                $scope.loggedIn = successful;
+
                 if (!successful) {
                     alert('Login Failed');
                     return
                 }
                 else {
-
+                    $('#loginForm').modal('hide');
                     $location.path('/home');
                 }
 
                 console.log($scope.loggedIn);
             });
+        };
+
+        $scope.logout = function () {
+
+            loginService.logout();
+            $scope.loggedIn = 0;
         };
 
         $scope.postTest = function () {

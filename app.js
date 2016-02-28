@@ -51,14 +51,14 @@ app.post('*', function (req, res, next) {
         authService.verify(req.get('AuthToken'), function (payload) {
 
             if (payload) {
-
+                console.log("xxx");
+                console.log(payload);
                 user.getUser({_id: payload.sub}, function (userObj) {
                     req.User = userObj;
                     next();
                 })
             } else {
-
-                res.send(-1);
+                res.sendStatus(-1);
             }
         });
     }

@@ -44,12 +44,17 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
             console.log("checking voted");
 
+
+            console.log(upvotes);
+            console.log(downvotes);
+
             if (downvotes.indexOf(sessionStorage.userId) > -1){
                 $scope.voteFlags[id] = true;
                 return true;
             }
             else if(upvotes.indexOf(sessionStorage.userId) > -1){
                 $scope.voteFlags[id] = true;
+
                 return true;
             }
 
@@ -61,12 +66,18 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
         };
 
         $scope.liked = function (post) {
+
+            console.log($scope.selectedProduct);
+
+
             if(!$scope.alreadyVoted(post.up_votes, post.down_votes, post._id)) {
                 postService.vote(1, post._id).then(function (response) {
-                        post.up_votes.push(response.id);
+
+                        post.up_votes.push(response);
+
                     },
                     function (response) {
-
+                        $scope.voteFlags[post._id] = true;
                         alert('Cant do that');
                     }
                 );
@@ -79,7 +90,9 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
         $scope.disliked = function (post) {
             if (!$scope.alreadyVoted(post.up_votes, post.down_votes, post._id)) {
                 postService.vote(0, post._id).then(function (response) {
-                        post.down_votes.push(response.id);
+
+                            post.down_votes.push(response);
+
                     },
                     function (response) {
 

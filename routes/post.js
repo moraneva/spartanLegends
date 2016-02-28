@@ -19,9 +19,11 @@ router.post('/new', function (req, res) {
     });
 });
 
-router.post('/vote/', function (req, res) {
+router.post('/vote', function (req, res) {
 
     callback = function (err) {
+
+        console.log(err);
 
         if (!err) {
 
