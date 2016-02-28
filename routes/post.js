@@ -19,4 +19,23 @@ router.post('/post', function (req, res) {
     });
 });
 
+
+router.post('/vote/', function (req, res) {
+
+    callback = function () {
+
+    };
+
+    //if 1 then upvote
+    if (req.body.direction) {
+
+        comment.upVote(req.body.uId, req.body.pId);
+    } else {
+
+        //downvote
+        comment.downVote(req.body.uId, req.body.pId);
+    }
+
+});
+
 module.exports = router;

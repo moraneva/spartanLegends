@@ -40,12 +40,16 @@ app.controller('companyController', ["$scope", "$routeParams", "companyService",
 
         $scope.liked = function (post) {
 
-            post.up_votes.push(69);
+           commentService.vote(1, post._id).then(function (response) {
+               post.up_votes.push(response.data.id);
+           });
         };
 
         $scope.disliked = function (post) {
 
-            post.down_votes.push(69);
+            commentService.vote(0, post._id).then(function (response) {
+                post.down_votes.push(response.data.id);
+            });
         };
 
         $scope.toggleComments = function (post) {
