@@ -62,7 +62,7 @@ app.post('*', function (req, res, next) {
 app.use('/', routes);
 app.use('/auth', auth);
 app.use('/company', company);
-//app.use('/post', posts);
+app.use('/post', posts);
 app.use('/comment', comments);
 app.use('/product', products);
 

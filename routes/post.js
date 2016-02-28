@@ -1,4 +1,3 @@
-
 /**
  * Created by zacharyrosenthal on 2/27/16.
  */
@@ -6,20 +5,19 @@ var express = require('express');
 var router = express.Router();
 var Post = require('../repository/post');
 
-router.post('/post', function (req, res) {
+router.post('/new', function (req, res) {
 
-    Post.createPost(data, function (err, post) {
+    Post.createPost(req.body, function (err, post) {
 
         if (!err) {
 
-            res.send(post._id);
+            res.send(post);
         } else {
 
             res.status(500).send({error: 'object creation failed'});
         }
     });
 });
-
 
 router.post('/vote/', function (req, res) {
 
